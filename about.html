@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About — Nebula Trade</title>
+    <meta name="description" content="Learn about Nebula Trade's mission, values, team, and journey in galactic trading.">
+    <meta property="og:title" content="About — Nebula Trade">
+    <link rel="stylesheet" href="shared.css">
+    <!-- Fonts from Stitch reference (assuming shared.css might not include them globally or with specific weights) -->
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;400;600;800&family=Inter:wght@300;400;600&family=Space_Grotesk:wght@300;500;700&display=swap" rel="stylesheet"/>
+</head>
+<body style="background-color: #131313; color: #e5e2e1; font-family: 'Inter', sans-serif;">
+    <!-- Global selection style from Stitch (should ideally be in shared.css) -->
+    <!-- <style>body::selection { background-color: rgba(208, 188, 255, 0.3); }</style> -->
+
+    <!-- Grainy Overlay (from Stitch) -->
+    <div style="position: fixed; inset: 0; background-image: url(&quot;data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E&quot;); opacity: 0.03; pointer-events: none; z-index: -1;"></div>
+
+    <!-- Background Content (Blurred Dashboard from Stitch, adapted to be a general page background) -->
+    <div style="min-height: 100vh; padding: 2rem; opacity: 0.4; filter: blur(12px) grayscale(100%); pointer-events: none; position: fixed; inset: 0; z-index: -2;">
+        <!-- This content is purely decorative background, mimicking Stitch's blurred dashboard -->
+        <header style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 3rem;">
+            <h1 style="font-family: 'Manrope', sans-serif; font-size: 2.25rem; font-weight: 800; letter-spacing: -0.05em; color: #d0bcff; text-transform: uppercase;">NEBULA TRADE</h1>
+            <div style="display: flex; gap: 1rem;">
+                <div style="width: 3rem; height: 3rem; border-radius: 9999px; background-color: #201f1f;"></div>
+            </div>
+        </header>
+        <div style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 2rem;">
+            <div style="grid-column: span 8 / span 8; height: 24rem; background-color: #201f1f; border-radius: 0.75rem;"></div>
+            <div style="grid-column: span 4 / span 4; height: 24rem; background-color: #201f1f; border-radius: 0.75rem;"></div>
+            <div style="grid-column: span 4 / span 4; height: 16rem; background-color: #201f1f; border-radius: 0.75rem;"></div>
+            <div style="grid-column: span 4 / span 4; height: 16rem; background-color: #201f1f; border-radius: 0.75rem;"></div>
+            <div style="grid-column: span 4 / span 4; height: 16rem; background-color: #201f1f; border-radius: 0.75rem;"></div>
+        </div>
+    </div>
+
+    <div id="scroll-progress"></div>
+    <nav id="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo" data-page="index">
+                <span class="logo-text">NEBULA TRADE</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html" data-page="index">Home</a>
+                <a href="features.html" data-page="features">Features</a>
+                <a href="about.html" data-page="about" class="active">About</a>
+                <a href="contact.html" data-page="contact">Contact</a>
+            </div>
+            <button class="nav-hamburger" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <main style="padding: 4rem 0; max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 4rem;">
+
+        <!-- Hero Section -->
+        <section id="hero" style="position: relative; z-index: 1; padding: 4rem; background: rgba(32, 31, 31, 0.8); backdrop-filter: blur(24px); border-radius: 0.75rem; border: 1px solid rgba(70, 69, 84, 0.15); box-shadow: 0 0 64px rgba(208, 188, 255, 0.05); overflow: hidden;">
+            <!-- Atmospheric Gradient Glows (from Stitch) -->
+            <div style="position: absolute; top: -6rem; right: -6rem; width: 16rem; height: 16rem; background-color: rgba(208, 188, 255, 0.05); border-radius: 9999px; filter: blur(100px);"></div>
+            <div style="position: absolute; bottom: -6rem; left: -6rem; width: 16rem; height: 16rem; background-color: rgba(137, 206, 255, 0.05); border-radius: 9999px; filter: blur(100px);"></div>
+
+            <div class="container" style="max-width: 800px; margin: 0 auto; text-align: center;">
+                <h1 style="font-family: 'Manrope', sans-serif; font-size: 3rem; font-weight: 800; letter-spacing: -0.05em; color: #d0bcff; line-height: 1.1; margin-bottom: 1.5rem;">Navigating the Cosmos of Commerce</h1>
+                <p style="font-family: 'Inter', sans-serif; font-size: 1.125rem; line-height: 1.75; color: #c7c4d7;">
+                    Born from a shared vision among seasoned traders and astrophysicists, Nebula Trade began as a quest to demystify the complex galactic markets. Our founders, frustrated by opaque data and limited tools, envisioned a platform where clarity, precision, and community converged. From late-night coding sessions fueled by stardust and ambition, Nebula Trade emerged – a beacon for those seeking to chart their own course through the interstellar economy.
+                </p>
+            </div>
+        </section>
+
+        <!-- Mission & Values Section -->
+        <section id="mission-values" style="position: relative; z-index: 1; padding: 4rem; background: rgba(32, 31, 31, 0.8); backdrop-filter: blur(24px); border-radius: 0.75rem; border: 1px solid rgba(70, 69, 84, 0.15); box-shadow: 0 0 64px rgba(208, 188, 255, 0.05); overflow: hidden;">
+            <h2 class="section-title" style="font-family: 'Manrope', sans-serif; font-size: 2.25rem; font-weight: 700; letter-spacing: -0.025em; color: #e5e2e1; text-align: center; margin-bottom: 3rem;">Our Guiding Principles</h2>
+            <div class="grid-3" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
+                <div class="card" style="padding: 2.5rem; background: rgba(28, 27, 27, 0.5); border-radius: 0.5rem; border: 1px solid rgba(70, 69, 84, 0.1); text-align: center; box-shadow: 0 0 20px rgba(208, 188, 255, 0.05);">
+                    <div style="width: 3.5rem; height: 3.5rem; background-color: rgba(208, 188, 255, 0.1); border-radius: 0.5rem; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="28px" viewBox="0 0 24 24" width="28px" fill="#d0bcff"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zm0 13c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+                    </div>
+                    <h3 style="font-family: 'Manrope', sans-serif; font-size: 1.5rem; font-weight: 700; color: #e5e2e1; margin-bottom: 0.75rem;">Transparency</h3>
+                    <p style="font-family: 'Inter', sans-serif; font-size: 1rem; color: #c7c4d7;">We believe in open data and clear insights, ensuring every trader has the information needed to make informed decisions.</p>
+                </div>
+                <div class="card" style="padding: 2.5rem; background: rgba(28, 27, 27, 0.5); border-radius: 0.5rem; border: 1px solid rgba(70, 69, 84, 0.1); text-align: center; box-shadow: 0 0 20px rgba(208, 188, 255, 0.05);">
+                    <div style="width: 3.5rem; height: 3.5rem; background-color: rgba(137, 206, 255, 0.1); border-radius: 0.5rem; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="28px" viewBox="0 0 24 24" width="28px" fill="#89ceff"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M9 21c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-1H9v1zm3-19C8.14 2 5 5.14 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.86-3.14-7-7-7zm2.85 11.1l-.85.6V16h-4v-2.3l-.85-.6C7.8 12.16 7 10.63 7 9c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.63-.8 3.16-2.15 4.1z"/></svg>
+                    </div>
+                    <h3 style="font-family: 'Manrope', sans-serif; font-size: 1.5rem; font-weight: 700; color: #e5e2e1; margin-bottom: 0.75rem;">Innovation</h3>
+                    <p style="font-family: 'Inter', sans-serif; font-size: 1rem; color: #c7c4d7;">Constantly pushing the boundaries of trading technology, from advanced backtesting to AI-driven analysis.</p>
+                </div>
+                <div class="card" style="padding: 2.5rem; background: rgba(28, 27, 27, 0.5); border-radius: 0.5rem; border: 1px solid rgba(70, 69, 84, 0.1); text-align: center; box-shadow: 0 0 20px rgba(208, 188, 255, 0.05);">
+                    <div style="width: 3.5rem; height: 3.5rem; background-color: rgba(255, 182, 144, 0.1); border-radius: 0.5rem; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="28px" viewBox="0 0 24 24" width="28px" fill="#ffb690"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-4 0c1.66 0 2.99-1.34 2.99-3S13.66 5 12 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-4 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm8 4c-2.33 0-6.93 1.17-8 3v2h16v-2c-.93-1.83-5.67-3-8-3z"/></svg>
+                    </div>
+                    <h3 style="font-family: 'Manrope', sans-serif; font-size: 1.5rem; font-weight: 700; color: #e5e2e1; margin-bottom: 0.75rem;">Community</h3>
+                    <p style="font-family: 'Inter', sans-serif; font-size: 1rem; color: #c7c4d7;">Fostering a supportive network where knowledge is shared, and growth is collective.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Team Section -->
+        <section id="team" style="position: relative; z-index: 1; padding: 4rem; background: rgba(32, 31, 31, 0.8); backdrop-filter: blur(24px); border-radius: 0.75rem; border: 1px solid rgba(70, 69, 84, 0.15); box-shadow: 0 0 64px rgba(208, 188, 255, 0.05); overflow: hidden;">
+            <h2 class="section-title" style="font-family: 'Manrope', sans-serif; font-size: 2.25rem; font-weight: 700; letter-spacing: -0.025em; color: #e5e2e1; text-align: center; margin-bottom: 3rem;">Meet the Crew</h2>
+            <div class="grid-2" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+                <!-- Team Member 1 -->
+                <div class="card" style="display: flex; flex-direction: column; align-items: center; text-align: center; padding: 2.5rem; background: rgba(28, 27, 27, 0.5); border-radius: 0.5rem; border: 1px solid rgba(70, 69, 84, 0.1); box-shadow: 0 0 20px rgba(208, 188, 255, 0.05);">
+                    <img src="https://api.dicebear.com/7.x/personas/svg?seed=Elara" alt="Elara Vance avatar" style="width: 6rem; height: 6rem; border-radius: 9999px; margin-bottom: 1.5rem; border: 3px solid #d0bcff; box-shadow: 0 0 15px rgba(208, 188, 255, 0.3);">
+                    <h3 style="font-family: 'Manrope', sans-serif; font-size: 1.5rem; font-weight: 700; color: #e5e2e1; margin-bottom: 0.5rem;">Elara Vance</h3>
+                    <p style="font-family: 'Space Grotesk', sans-serif; font-size: 0.875rem; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; color: #89ceff; margin-bottom: 1rem;">CEO & Founder</p>
+                    <p style="font-family: 'Inter', sans-serif; font-size: 1rem; color: #c7c4d7;">A visionary leader with a background in astrophysics and quantitative trading. Elara guides Nebula Trade's strategic trajectory, ensuring our platform remains at the forefront of innovation.</p>
+                </div>
+                <!-- Team Member 2 -->
+                <div class="card" style="display: flex; flex-direction: column; align-items: center; text-align: center; padding: 2.5rem; background: rgba(28, 27, 27, 0.5); border-radius: 0.5rem; border: 1px solid rgba(70, 69, 84, 0.1); box-shadow: 0 0 20px rgba(208, 188, 255, 0.05);">
+                    <img src="https://api.dicebear.com/7.x/personas/svg?seed=Kaelen" alt="Kaelen Rix avatar" style="width: 6rem; height: 6rem; border-radius: 9999px; margin-bottom: 1.5rem; border: 3px solid #89ceff; box-shadow: 0 0 15px rgba(137, 206, 255, 0.3);">
+                    <h3 style="font-family: 'Manrope', sans-serif; font-size: 1.5rem; font-weight: 700; color: #e5e2e1; margin-bottom: 0.5rem;">Kaelen Rix</h3>
+                    <p style="font-family: 'Space Grotesk', sans-serif; font-size: 0.875rem; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; color: #d0bcff; margin-bottom: 1rem;">CTO & Co-Founder</p>
+                    <p style="font-family: 'Inter', sans-serif; font-size: 1rem; color: #c7c4d7;">The engineering mastermind behind Nebula Trade's robust architecture. Kaelen's expertise in distributed systems and secure protocols ensures a reliable and high-performance trading environment.</p>
+                </div>
+                <!-- Team Member 3 -->
+                <div class="card" style="display: flex; flex-direction: column; align-items: center; text-align: center; padding: 2.5rem; background: rgba(28, 27, 27, 0.5); border-radius: 0.5rem; border: 1px solid rgba(70, 69, 84, 0.1); box-shadow: 0 0 20px rgba(208, 188, 255, 0.05);">
+                    <img src="https://api.dicebear.com/7.x/personas/svg?seed=Lyra" alt="Lyra Thorne avatar" style="width: 6rem; height: 6rem; border-radius: 9999px; margin-bottom: 1.5rem; border: 3px solid #ffb690; box-shadow: 0 0 15px rgba(255, 182, 144, 0.3);">
+                    <h3 style="font-family: 'Manrope', sans-serif; font-size: 1.5rem; font-weight: 700; color: #e5e2e1; margin-bottom: 0.5rem;">Lyra Thorne</h3>
+                    <p style="font-family: 'Space Grotesk', sans-serif; font-size: 0.875rem; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; color: #89ceff; margin-bottom: 1rem;">Head of Research</p>
+                    <p style="font-family: 'Inter', sans-serif; font-size: 1rem; color: #c7c4d7;">An expert in market dynamics and algorithmic strategies. Lyra leads our research division, developing the sophisticated tools that give our users an edge.</p>
+                </div>
+                <!-- Team Member 4 -->
+                <div class="card" style="display: flex; flex-direction: column; align-items: center; text-align: center; padding: 2.5rem; background: rgba(28, 27, 27, 0.5); border-radius: 0.5rem; border: 1px solid rgba(70, 69, 84, 0.1); box-shadow: 0 0 20px rgba(208, 188, 255, 0.05);">
+                    <img src="https://api.dicebear.com/7.x/personas/svg?seed=Jax" alt="Jax Orion avatar" style="width: 6rem; height: 6rem; border-radius: 9999px; margin-bottom: 1.5rem; border: 3px solid #d0bcff; box-shadow: 0 0 15px rgba(208, 188, 255, 0.3);">
+                    <h3 style="font-family: 'Manrope', sans-serif; font-size: 1.5rem; font-weight: 700; color: #e5e2e1; margin-bottom: 0.5rem;">Jax Orion</h3>
+                    <p style="font-family: 'Space Grotesk', sans-serif; font-size: 0.875rem; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; color: #89ceff; margin-bottom: 1rem;">Community Manager</p>
+                    <p style="font-family: 'Inter', sans-serif; font-size: 1rem; color: #c7c4d7;">The heart of our user network. Jax ensures a vibrant and supportive community, facilitating knowledge exchange and user feedback to shape our platform's evolution.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Timeline/Milestones Section -->
+        <section id="milestones" style="position: relative; z-index: 1; padding: 4rem; background: rgba(32, 31, 31, 0.8); backdrop-filter: blur(24px); border-radius: 0.75rem; border: 1px solid rgba(70, 69, 84, 0.15); box-shadow: 0 0 64px rgba(208, 188, 255, 0.05); overflow: hidden;">
+            <h2 class="section-title" style="font-family: 'Manrope', sans-serif; font-size: 2.25rem; font-weight: 700; letter-spacing: -0.025em; color: #e5e2e1; text-align: center; margin-bottom: 3rem;">Our Journey Through Time</h2>
+            <div style="display: grid; grid-template-columns: 1fr; gap: 2.5rem; position: relative;">
+                <!-- Vertical line -->
+                <div style="position: absolute; left: 50%; top: 0; bottom: 0; width: 2px; background-color: rgba(70, 69, 84, 0.3); transform: translateX(-50%);"></div>
+
+                <!-- Milestone 1 -->
+                <div style="display: flex; align-items: center; justify-content: space-between; position: relative;">
+                    <div style="width: 50%; padding-right: 3rem; text-align: right;">
+                        <h3 style="font-family: 'Manrope', sans-serif; font-size: 1.5rem; font-weight: 700; color: #d0bcff; margin-bottom: 0.5rem;">2077 - Inception</h3>
+                        <p style="font-family: 'Inter', sans-serif; font-size: 1rem; color: #c7c4d7;">Founders unite with a shared vision for a transparent galactic trading platform.</p>
+                    </div>
+                    <div style="width: 1.5rem; height: 1.5rem; background-color: #d0bcff; border-radius: 9999px; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); border: 3px solid #1c1b1b; box-shadow: 0 0 10px rgba(208, 188, 255, 0.5);"></div>
+                    <div style="width: 50%; padding-left: 3rem;"></div>
+                </div>
+
+                <!-- Milestone 2 -->
+                <div style="display: flex; align-items: center; justify-content: space-between; position: relative;">
+                    <div style="width: 50%; padding-right: 3rem;"></div>
+                    <div style="width: 1.5rem; height: 1.5rem; background-color: #89ceff; border-radius: 9999px; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); border: 3px solid #1c1b1b; box-shadow: 0 0 10px rgba(137, 206, 255, 0.5);"></div>
+                    <div style="width: 50%; padding-left: 3rem; text-align: left;">
+                        <h3 style="font-family: 'Manrope', sans-serif; font-size: 1.5rem; font-weight: 700; color: #89ceff; margin-bottom: 0.5rem;">2079 - Alpha Launch</h3>
+                        <p style="font-family: 'Inter', sans-serif; font-size: 1rem; color: #c7c4d7;">First private alpha release to a select group of interstellar traders for rigorous testing.</p>
+                    </div>
+                </div>
+
+                <!-- Milestone 3 -->
+                <div style="display: flex; align-items: center; justify-content: space-between; position: relative;">
+                    <div style="width: 50%; padding-right: 3rem; text-align: right;">
+                        <h3 style="font-family: 'Manrope', sans-serif; font-size: 1.5rem; font-weight: 700; color: #d0bcff; margin-bottom: 0.5rem;">2081 - Nebula Core v1.0</h3>
+                        <p style="font-family: 'Inter', sans-serif; font-size: 1rem; color: #c7c4d7;">Public launch of Nebula Trade, featuring real-time data and basic backtesting.</p>
+                    </div>
+                    <div style="width: 1.5rem; height: 1.5rem; background-color: #d0bcff; border-radius: 9999px; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); border: 3px solid #1c1b1b; box-shadow: 0 0 10px rgba(208, 188, 255, 0.5);"></div>
+                    <div style="width: 50%; padding-left: 3rem;"></div>
+                </div>
+
+                <!-- Milestone 4 -->
+                <div style="display: flex; align-items: center; justify-content: space-between; position: relative;">
+                    <div style="width: 50%; padding-right: 3rem;"></div>
+                    <div style="width: 1.5rem; height: 1.5rem; background-color: #89ceff; border-radius: 9999px; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); border: 3px solid #1c1b1b; box-shadow: 0 0 10px rgba(137, 206, 255, 0.5);"></div>
+                    <div style="width: 50%; padding-left: 3rem; text-align: left;">
+                        <h3 style="font-family: 'Manrope', sans-serif; font-size: 1.5rem; font-weight: 700; color: #89ceff; margin-bottom: 0.5rem;">2083 - AI Integration</h3>
+                        <p style="font-family: 'Inter', sans-serif; font-size: 1rem; color: #c7c4d7;">Introduction of AI-powered market analysis and predictive modeling capabilities.</p>
+                    </div>
+                </div>
+
+                <!-- Milestone 5 -->
+                <div style="display: flex; align-items: center; justify-content: space-between; position: relative;">
+                    <div style="width: 50%; padding-right: 3rem; text-align: right;">
+                        <h3 style="font-family: 'Manrope', sans-serif; font-size: 1.5rem; font-weight: 700; color: #d0bcff; margin-bottom: 0.5rem;">2085 - Multi-Asset Expansion</h3>
+                        <p style="font-family: 'Inter', sans-serif; font-size: 1rem; color: #c7c4d7;">Expanded support for a wider range of galactic commodities and digital assets.</p>
+                    </div>
+                    <div style="width: 1.5rem; height: 1.5rem; background-color: #d0bcff; border-radius: 9999px; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); border: 3px solid #1c1b1b; box-shadow: 0 0 10px rgba(208, 188, 255, 0.5);"></div>
+                    <div style="width: 50%; padding-left: 3rem;"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section id="cta" style="position: relative; z-index: 1; padding: 4rem; background: rgba(32, 31, 31, 0.8); backdrop-filter: blur(24px); border-radius: 0.75rem; border: 1px solid rgba(70, 69, 84, 0.15); box-shadow: 0 0 64px rgba(208, 188, 255, 0.05); overflow: hidden;">
+            <div class="container" style="max-width: 800px; margin: 0 auto; text-align: center;">
+                <h2 style="font-family: 'Manrope', sans-serif; font-size: 2.5rem; font-weight: 800; letter-spacing: -0.05em; color: #e5e2e1; line-height: 1.2; margin-bottom: 1.5rem;">Ready to chart your course?</h2>
+                <p style="font-family: 'Inter', sans-serif; font-size: 1.125rem; line-height: 1.75; color: #c7c4d7; margin-bottom: 2.5rem;">
+                    Join our journey and explore the possibilities within the interstellar economy. We're building the future of trading, one star system at a time.
+                </p>
+                <a href="contact.html" class="btn-primary" style="display: inline-flex; align-items: center; justify-content: center; gap: 0.75rem; padding: 1rem 2.5rem; background: linear-gradient(to right, #d0bcff, #a078ff); color: #23005c; font-family: 'Manrope', sans-serif; font-weight: 800; font-size: 1.125rem; text-transform: uppercase; letter-spacing: 0.1em; border-radius: 0.5rem; text-decoration: none; transition: all 0.2s ease-in-out; box-shadow: 0 0 20px rgba(208, 188, 255, 0.2);">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M12 2c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm9 7h-6v13h-2v-6h-2v6H9V9H3V7h18v2z"/></svg>
+                    Contact Us
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; padding: 3rem 0; border-top: 1px solid rgba(70, 69, 84, 0.15);">
+            <div style="display: flex; flex-direction: column; gap: 1rem;">
+                <a href="index.html" class="nav-logo" style="text-decoration: none;">
+                    <span class="logo-text" style="font-family: 'Manrope', sans-serif; font-size: 1.5rem; font-weight: 800; letter-spacing: -0.05em; color: #d0bcff; text-transform: uppercase;">NEBULA TRADE</span>
+                </a>
+                <p style="font-family: 'Inter', sans-serif; font-size: 0.875rem; color: #c7c4d7;">Charting your course through the interstellar economy.</p>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+                <h3 style="font-family: 'Space Grotesk', sans-serif; font-size: 1rem; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; color: #e5e2e1; margin-bottom: 0.5rem;">Quick Links</h3>
+                <a href="index.html" style="font-family: 'Inter', sans-serif; font-size: 0.875rem; color: #c7c4d7; text-decoration: none; transition: color 0.2s ease-in-out;">Home</a>
+                <a href="features.html" style="font-family: 'Inter', sans-serif; font-size: 0.875rem; color: #c7c4d7; text-decoration: none; transition: color 0.2s ease-in-out;">Features</a>
+                <a href="about.html" style="font-family: 'Inter', sans-serif; font-size: 0.875rem; color: #c7c4d7; text-decoration: none; transition: color 0.2s ease-in-out;">About</a>
+                <a href="contact.html" style="font-family: 'Inter', sans-serif; font-size: 0.875rem; color: #c7c4d7; text-decoration: none; transition: color 0.2s ease-in-out;">Contact</a>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+                <h3 style="font-family: 'Space Grotesk', sans-serif; font-size: 1rem; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; color: #e5e2e1; margin-bottom: 0.5rem;">Connect</h3>
+                <div style="display: flex; gap: 1rem;">
+                    <a href="#" aria-label="Twitter" style="color: #c7c4d7; transition: color 0.2s ease-in-out;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.37-.83.5-1.75.85-2.73 1.04C17.75 4.67 16.6 4 15.3 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C7.6 8.75 4.07 6.83 1.7 3.86c-.37.64-.58 1.38-.58 2.18 0 1.49.75 2.81 1.88 3.59-.69-.02-1.34-.21-1.91-.53v.03c0 2.08 1.48 3.81 3.44 4.2-1.44.39-2.94.47-4.49.17.46 1.35 1.8 2.34 3.38 2.37-1.48 1.16-3.34 1.85-5.36 1.85-.35 0-.7-.02-1.05-.06C2.6 20.3 4.5 21 6.5 21c8.1 0 12.5-6.7 12.5-12.5 0-.19-.01-.38-.01-.56.85-.61 1.58-1.37 2.16-2.24z"/></svg>
+                    </a>
+                    <a href="#" aria-label="Discord" style="color: #c7c4d7; transition: color 0.2s ease-in-out;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M20.22 0H3.78C2.84 0 2.07.77 2.07 1.71v16.58c0 .94.77 1.71 1.71 1.71h14.65l2.79 2.79V1.71c0-.94-.77-1.71-1.71-1.71zM15.5 14.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm-7 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg>
+                    </a>
+                    <a href="#" aria-label="GitHub" style="color: #c7c4d7; transition: color 0.2s ease-in-out;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.835 2.809 1.305 3.493.996.108-.775.418-1.305.762-1.604-2.665-.3-5.466-1.332-5.466-5.93 0-1.312.465-2.387 1.226-3.22-.121-.303-.535-1.524.114-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.65-.152.236 1.873.118 3.176.766.833 1.23 1.908 1.23 3.22 0 4.611-2.807 5.621-5.476 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.807 24 17.302 24 12 24 5.373 18.627 0 12 0z"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div style="text-align: center; padding: 1.5rem 0; border-top: 1px solid rgba(70, 69, 84, 0.1); font-family: 'Inter', sans-serif; font-size: 0.75rem; color: #464554;">
+            &copy; 2085 Nebula Trade. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- Decorative Elements (from Stitch) -->
+    <div style="position: fixed; bottom: 3rem; right: 3rem; display: flex; flex-direction: column; align-items: flex-end; gap: 0.5rem; pointer-events: none; opacity: 0.2;">
+        <div style="height: 2px; width: 8rem; background-color: #d0bcff;"></div>
+        <div style="height: 2px; width: 4rem; background-color: #89ceff;"></div>
+        <div style="font-family: 'Space Grotesk', sans-serif; font-size: 0.625rem; text-transform: uppercase; letter-spacing: 0.2em;">Aesthetic Protocol // V.2.04</div>
+    </div>
+
+    <script src="shared.js"></script>
+    <script src="animations.js"></script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+# QA artifacts
+screenshot-*.png
+scroll-*.png
+screenshot-midpage.png
+videos/
+
+# Factory metadata
+factory-result.json
+project-brief.json
+
+# Stitch reference files
+stitch-*.html

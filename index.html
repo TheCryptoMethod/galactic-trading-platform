@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home — galactic-trading-platform</title>
+    <meta name="description" content="Galactic Trading Platform: Advanced backtesting, AI insights, and a structured journal for traders. Break free from uncertainty and achieve consistent profitability.">
+    <meta property="og:title" content="Home — galactic-trading-platform">
+    <link rel="stylesheet" href="shared.css">
+    <!-- Material Symbols Outlined from Stitch reference -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <!-- Fonts from Stitch reference -->
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+    <style>
+        /* Global styles from Stitch reference */
+        body {
+            background-color: #131313;
+            color: #e5e2e1;
+            overflow-x: hidden;
+            font-family: 'Inter', sans-serif; /* Default body font */
+        }
+        .grainy-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 99;
+            opacity: 0.03;
+            background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuB3jnucYOSg6slYyrEEGGTpqup-hGlBpWBwyP5wOPCnz1oKA35w_LC3k0VujZ3szOgJEP_kpISQ7IQKWyqb93rdxbqFGMtnSbwefMBvnk1yQcHq7sZlZk2J3e3FhdoVdRgrEQ_tGc--Tw_vnLhT81gLRovywcoaoofRVa1kG9rqfnSgBMzPryO_epbtLFQBaTZmxaXdopYP-IR1T3ZfGiv0_THPuh9lBw9fRY3Bij93EvJQhqKYqu0PFtmXi_G7D1_7IjOzptbDOZA);
+        }
+        .nebula-glow {
+            background: radial-gradient(circle at 50% 50%, rgba(208, 188, 255, 0.1) 0%, rgba(137, 206, 255, 0.05) 50%, transparent 100%);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+        }
+        /* Custom styles for this page, replicating Stitch's Tailwind-like classes */
+        .font-headline { font-family: 'Manrope', sans-serif; }
+        .font-body { font-family: 'Inter', sans-serif; }
+        .font-label { font-family: 'Space Grotesk', sans-serif; }
+
+        /* Colors from Stitch's tailwind.config */
+        .text-on-surface { color: #e5e2e1; }
+        .text-on-surface-variant { color: #c7c4d7; }
+        .text-primary { color: #d0bcff; }
+        .text-secondary { color: #89ceff; }
+        .text-tertiary { color: #ffb690; }
+        .bg-primary { background-color: #d0bcff; }
+        .bg-secondary { background-color: #89ceff; }
+        .bg-tertiary { background-color: #ffb690; }
+        .bg-primary-container { background-color: #a078ff; }
+        .text-on-primary-container { color: #340080; }
+        .bg-surface-container-lowest { background-color: #0e0e0e; }
+        .bg-surface-container-low { background-color: #1c1b1b; }
+        .bg-surface-container { background-color: #201f1f; }
+        .bg-surface-bright { background-color: #3a3939; }
+        .border-outline-variant\/10 { border-color: rgba(70, 69, 84, 0.1); }
+        .border-outline-variant\/15 { border-color: rgba(70, 69, 84, 0.15); }
+        .border-outline-variant\/20 { border-color: rgba(70, 69, 84, 0.2); }
+        .border-primary\/20 { border-color: rgba(208, 188, 255, 0.2); }
+        .shadow-\[0_0_20px_rgba\(208,188,255,0.05\)\] { box-shadow: 0 0 20px rgba(208, 188, 255, 0.05); }
+        .shadow-\[0_0_10px_rgba\(137,206,255,0.8\)\] { box-shadow: 0 0 10px rgba(137, 206, 255, 0.8); }
+        .selection\:bg-primary\/30::selection { background-color: rgba(208, 188, 255, 0.3); }
+        .selection\:text-primary::selection { color: #d0bcff; }
+
+        /* Specific styles for hero background and mockup */
+        .hero-background {
+            background: url('hero-bg.png') center/cover;
+            opacity: 0.3;
+            position: absolute;
+            inset: 0;
+            z-index: -2; /* Below nebula glow and content */
+        }
+        .product-mockup {
+            transform: perspective(1500px) rotateY(-15deg) rotateX(8deg) scale(1.05);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.6), 0 0 40px rgba(208,188,255,0.15);
+            border-radius: 1rem;
+            overflow: hidden;
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+        }
+        .product-mockup:hover {
+            transform: perspective(1500px) rotateY(-10deg) rotateX(5deg) scale(1.08);
+            box-shadow: 0 25px 70px rgba(0,0,0,0.7), 0 0 50px rgba(208,188,255,0.25);
+        }
+        /* Custom button styles to match Stitch's */
+        .btn-stitch-primary {
+            background-color: #d0bcff;
+            color: #23005c; /* on-primary-fixed */
+            font-weight: 700;
+            padding: 1rem 2rem;
+            border-radius: 0.75rem; /* xl */
+            font-size: 1.125rem; /* lg */
+            transition: all 0.2s ease-in-out;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+        .btn-stitch-primary:hover {
+            opacity: 0.9;
+            transform: scale(1.02);
+        }
+        .btn-stitch-primary:active {
+            transform: scale(0.98);
+        }
+        .btn-stitch-secondary-ghost {
+            background-color: transparent;
+            color: #d0bcff; /* primary */
+            border: 2px solid #d0bcff; /* primary */
+            font-weight: 700;
+            padding: 1rem 2rem;
+            border-radius: 0.75rem; /* xl */
+            font-size: 1.125rem; /* lg */
+            transition: all 0.2s ease-in-out;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+        .btn-stitch-secondary-ghost:hover {
+            background-color: rgba(208, 188, 255, 0.1); /* primary/10 */
+            transform: scale(1.02);
+        }
+        .btn-stitch-secondary-ghost:active {
+            transform: scale(0.98);
+        }
+        /* Pricing card highlight */
+        .pricing-card-highlight {
+            border-color: #d0bcff; /* primary */
+            box-shadow: 0 0 30px rgba(208, 188, 255, 0.2);
+            background: linear-gradient(to bottom right, rgba(208, 188, 255, 0.05), rgba(137, 206, 255, 0.03));
+        }
+        .pricing-card-highlight .btn-stitch-primary {
+            background-color: #89ceff; /* secondary */
+            color: #001e2f; /* on-secondary-fixed */
+        }
+        .pricing-card-highlight .btn-stitch-primary:hover {
+            background-color: #d0bcff; /* primary */
+        }
+    </style>
+</head>
+<body class="font-body selection:bg-primary/30 selection:text-primary">
+    <div class="grainy-overlay"></div>
+    <div id="scroll-progress"></div>
+    <!-- TopNavBar - Replicated from Stitch reference -->
+    <nav class="fixed top-0 w-full z-50 bg-[#131313]/80 backdrop-blur-xl border-b border-[#e5e2e1]/15 shadow-[0_0_20px_rgba(208,188,255,0.05)]">
+        <div class="flex justify-between items-center px-8 h-16 max-w-7xl mx-auto font-headline tracking-tight">
+            <div class="text-xl font-bold tracking-tighter text-on-surface">GALACTIC</div>
+            <div class="hidden md:flex items-center gap-8">
+                <a class="text-primary font-semibold border-b-2 border-primary pb-1" href="index.html">Home</a>
+                <a class="text-on-surface/70 hover:text-on-surface transition-colors hover:bg-primary/10 transition-all duration-300 px-3 py-1 rounded" href="features.html">Features</a>
+                <a class="text-on-surface/70 hover:text-on-surface transition-colors hover:bg-primary/10 transition-all duration-300 px-3 py-1 rounded" href="about.html">About</a>
+                <a class="text-on-surface/70 hover:text-on-surface transition-colors hover:bg-primary/10 transition-all duration-300 px-3 py-1 rounded" href="contact.html">Contact</a>
+            </div>
+            <button class="bg-primary-container text-on-primary-container px-6 py-2 rounded-xl text-sm font-bold active:scale-95 transition-transform hover:opacity-90">
+                Get Started
+            </button>
+        </div>
+    </nav>
+
+    <main class="pt-32 pb-24 px-8 max-w-7xl mx-auto relative">
+        <!-- Nebula Background - Replicated from Stitch reference -->
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[800px] nebula-glow pointer-events-none -z-10"></div>
+        <!-- Hero Background Image -->
+        <div class="hero-background"></div>
+
+        <!-- Hero Section -->
+        <section id="hero" class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center relative z-10 min-h-[calc(100vh-128px)]">
+            <div class="space-y-10">
+                <div class="space-y-6">
+                    <h1 class="text-6xl md:text-7xl font-headline font-extrabold tracking-tighter text-on-surface leading-tight">
+                        Are you trapped in a <br/><span class="text-primary italic">trading loop?</span> Break free with Galactic.
+                    </h1>
+                    <p class="text-xl text-on-surface-variant font-body leading-relaxed max-w-md">
+                        Stop guessing, start knowing. Our advanced platform delivers backtesting, AI insights, and a structured journal to elevate your strategy and achieve consistent profitability.
+                    </p>
+                </div>
+                <div class="flex flex-col sm:flex-row gap-4 pt-4">
+                    <a href="features.html" class="btn-stitch-primary">
+                        Explore Features <span class="material-symbols-outlined">rocket_launch</span>
+                    </a>
+                    <a href="#" class="btn-stitch-secondary-ghost">
+                        Watch Demo <span class="material-symbols-outlined">play_circle</span>
+                    </a>
+                </div>
+            </div>
+            <div class="flex justify-center lg:justify-end">
+                <img src="product-mockup.png" alt="Galactic Trading Platform Product Mockup" class="product-mockup w-full max-w-lg h-auto object-contain"/>
+            </div>
+        </section>
+
+        <!-- Problem Section -->
+        <section id="problem" class="mt-48 space-y-20 relative z-10">
+            <div class="text-center space-y-4 max-w-2xl mx-auto">
+                <span class="font-label text-sm text-secondary tracking-[0.2em] font-bold uppercase">The Challenge</span>
+                <h2 class="text-4xl md:text-5xl font-headline font-bold text-on-surface tracking-tight">The Void of Uncertainty: Why Most Traders Struggle</h2>
+                <p class="text-on-surface-variant font-body">Identify the hidden pitfalls that hinder your trading success.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-x-12 gap-y-10">
+                <!-- Pain Story 1 -->
+                <div class="p-8 rounded-xl bg-surface-container-low/40 border border-outline-variant/5 hover:border-primary/20 transition-colors group">
+                    <h3 class="text-lg font-headline font-bold text-on-surface flex items-center gap-3 mb-4">
+                        <span class="material-symbols-outlined text-primary" data-weight="fill">data_alert</span>
+                        Lost in Data Overload
+                    </h3>
+                    <p class="text-on-surface-variant leading-relaxed font-body">
+                        You spend 8 hours a day sifting through charts, news, and indicators, yet still miss key entries. <strong class="text-primary">73% of traders report feeling overwhelmed by information</strong>, leading to analysis paralysis and missed opportunities.
+                    </p>
+                </div>
+                <!-- Pain Story 2 -->
+                <div class="p-8 rounded-xl bg-surface-container-low/40 border border-outline-variant/5 hover:border-primary/20 transition-colors group">
+                    <h3 class="text-lg font-headline font-bold text-on-surface flex items-center gap-3 mb-4">
+                        <span class="material-symbols-outlined text-primary" data-weight="fill">history_toggle_off</span>
+                        Repeating Past Mistakes
+                    </h3>
+                    <p class="text-on-surface-variant leading-relaxed font-body">
+                        Without a structured journal, you keep making the same errors, costing you <strong class="text-primary">15-20% of your capital each quarter</strong>. There's no clear path to improvement, just a cycle of hope and frustration.
+                    </p>
+                </div>
+                <!-- Pain Story 3 -->
+                <div class="p-8 rounded-xl bg-surface-container-low/40 border border-outline-variant/5 hover:border-primary/20 transition-colors group">
+                    <h3 class="text-lg font-headline font-bold text-on-surface flex items-center gap-3 mb-4">
+                        <span class="material-symbols-outlined text-primary" data-weight="fill">blind</span>
+                        Blind Strategy Testing
+                    </h3>
+                    <p class="text-on-surface-variant leading-relaxed font-body">
+                        You've tried countless strategies, but without robust backtesting, you're risking real capital on unproven theories. <strong class="text-primary">90% of retail traders fail to achieve consistent profitability</strong>, often due to inadequate strategy validation.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Before/After Section -->
+        <section id="before-after" class="mt-48 space-y-20 relative z-10">
+            <div class="text-center space-y-4 max-w-2xl mx-auto">
+                <span class="font-label text-sm text-secondary tracking-[0.2em] font-bold uppercase">The Transformation</span>
+                <h2 class="text-4xl md:text-5xl font-headline font-bold text-on-surface tracking-tight">From Chaos to Clarity: Your Trading Evolution</h2>
+                <p class="text-on-surface-variant font-body">Experience the profound difference Galactic makes in your trading journey.</p>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- Without Galactic -->
+                <div class="p-10 rounded-xl bg-surface-container-low/40 border border-outline-variant/5 space-y-8">
+                    <h3 class="text-3xl font-headline font-bold text-on-surface flex items-center gap-4">
+                        <span class="material-symbols-outlined text-tertiary text-4xl">cancel</span>
+                        Without Galactic
+                    </h3>
+                    <ul class="space-y-4 text-on-surface-variant text-lg font-body">
+                        <li class="flex items-start gap-3">
+                            <span class="material-symbols-outlined text-tertiary mt-1">close</span>
+                            <span>Emotional, reactive decisions driven by fear and greed.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="material-symbols-outlined text-tertiary mt-1">close</span>
+                            <span>Inconsistent, unpredictable results with frequent drawdowns.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="material-symbols-outlined text-tertiary mt-1">close</span>
+                            <span>No clear, validated strategy, leading to constant second-guessing.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="material-symbols-outlined text-tertiary mt-1">close</span>
+                            <span>Wasted hours on manual analysis and tracking, reducing free time.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="material-symbols-outlined text-tertiary mt-1">close</span>
+                            <span>A cycle of frustration and losses, eroding confidence and capital.</span>
+                        </li>
+                    </ul>
+                </div>
+                <!-- With Galactic -->
+                <div class="p-10 rounded-xl bg-surface-container/60 border border-primary/20 shadow-xl pricing-card-highlight">
+                    <h3 class="text-3xl font-headline font-bold text-on-surface flex items-center gap-4">
+                        <span class="material-symbols-outlined text-secondary text-4xl">check_circle</span>
+                        With Galactic
+                    </h3>
+                    <ul class="space-y-4 text-on-surface-variant text-lg font-body">
+                        <li class="flex items-start gap-3">
+                            <span class="material-symbols-outlined text-secondary mt-1">done</span>
+                            <span>Data-driven, objective decisions based on proven insights.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="material-symbols-outlined text-secondary mt-1">done</span>
+                            <span>Consistent, predictable profitability and steady account growth.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="material-symbols-outlined text-secondary mt-1">done</span>
+                            <span>Validated, robust strategies that you trust and understand.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="material-symbols-outlined text-secondary mt-1">done</span>
+                            <span>Efficient workflow, automating analysis and freeing up your time.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="material-symbols-outlined text-secondary mt-1">done</span>
+                            <span>Confident execution and a clear path to continuous improvement.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section (Outcomes) -->
+        <section id="features" class="mt-48 space-y-20 relative z-10">
+            <div class="text-center space-y-4 max-w-2xl mx-auto">
+                <span class="font-label text-sm text-secondary tracking-[0.2em] font-bold uppercase">Core Advantages</span>
+                <h2 class="text-4xl md:text-5xl font-headline font-bold text-on-surface tracking-tight">Beyond the Horizon: Your Path to Trading Mastery</h2>
+                <p class="text-on-surface-variant font-body">Galactic empowers you with tools designed for unparalleled market navigation.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-10">
+                <!-- Feature 1 -->
+                <div class="p-8 rounded-xl bg-surface-container-low/40 border border-outline-variant/5 hover:border-primary/20 transition-colors group space-y-4">
+                    <span class="material-symbols-outlined text-primary text-4xl mb-2">verified</span>
+                    <h3 class="text-xl font-headline font-bold text-on-surface">Precision Strategy Validation</h3>
+                    <p class="text-on-surface-variant leading-relaxed font-body">
+                        Confidently deploy strategies proven by historical data, reducing risk by up to <strong class="text-primary">60%</strong> through rigorous backtesting.
+                    </p>
+                </div>
+                <!-- Feature 2 -->
+                <div class="p-8 rounded-xl bg-surface-container-low/40 border border-outline-variant/5 hover:border-primary/20 transition-colors group space-y-4">
+                    <span class="material-symbols-outlined text-primary text-4xl mb-2">auto_awesome</span>
+                    <h3 class="text-xl font-headline font-bold text-on-surface">Unbiased AI Market Insights</h3>
+                    <p class="text-on-surface-variant leading-relaxed font-body">
+                        Gain an edge with predictive analytics, identifying high-probability trades before they become obvious, enhancing your decision-making.
+                    </p>
+                </div>
+                <!-- Feature 3 -->
+                <div class="p-8 rounded-xl bg-surface-container-low/40 border border-outline-variant/5 hover:border-primary/20 transition-colors group space-y-4">
+                    <span class="material-symbols-outlined text-primary text-4xl mb-2">edit_note</span>
+                    <h3 class="text-xl font-headline font-bold text-on-surface">Structured Performance Growth</h3>
+                    <p class="text-on-surface-variant leading-relaxed font-body">
+                        Transform your trading with a journal that highlights strengths and weaknesses, improving your win rate by <strong class="text-primary">25%</strong>.
+                    </p>
+                </div>
+                <!-- Feature 4 -->
+                <div class="p-8 rounded-xl bg-surface-container-low/40 border border-outline-variant/5 hover:border-primary/20 transition-colors group space-y-4">
+                    <span class="material-symbols-outlined text-primary text-4xl mb-2">space_dashboard</span>
+                    <h3 class="text-xl font-headline font-bold text-on-surface">Immersive Trading Experience</h3>
+                    <p class="text-on-surface-variant leading-relaxed font-body">
+                        Navigate markets with a visually stunning, intuitive interface designed for peak focus and efficiency, minimizing distractions.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Social Proof Section -->
+        <section id="social-proof" class="mt-48 space-y-20 relative z-10">
+            <div class="text-center space-y-4 max-w-2xl mx-auto">
+                <span class="font-label text-sm text-secondary tracking-[0.2em] font-bold uppercase">Community Trust</span>
+                <h2 class="text-4xl md:text-5xl font-headline font-bold text-on-surface tracking-tight">Trusted by the Cosmos's Sharpest Minds</h2>
+                <p class="text-on-surface-variant font-body">Hear from traders who have transformed their results with Galactic.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-x-12 gap-y-10 mb-20">
+                <!-- Stat 1 -->
+                <div class="p-8 rounded-xl bg-surface-container-low/40 border border-outline-variant/5 text-center space-y-2">
+                    <p class="text-5xl font-headline font-extrabold text-primary">50K+</p>
+                    <p class="text-on-surface-variant text-lg font-body">Active Traders</p>
+                </div>
+                <!-- Stat 2 -->
+                <div class="p-8 rounded-xl bg-surface-container-low/40 border border-outline-variant/5 text-center space-y-2">
+                    <p class="text-5xl font-headline font-extrabold text-primary">92%</p>
+                    <p class="text-on-surface-variant text-lg font-body">User Satisfaction</p>
+                </div>
+                <!-- Stat 3 -->
+                <div class="p-8 rounded-xl bg-surface-container-low/40 border border-outline-variant/5 text-center space-y-2">
+                    <p class="text-5xl font-headline font-extrabold text-primary">35%</p>
+                    <p class="text-on-surface-variant text-lg font-body">Avg. ROI Increase</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-x-12 gap-y-10">
+                <!-- Testimonial 1 -->
+                <div class="p-8 rounded-xl bg-surface-container-low/40 border border-outline-variant/5 hover:border-primary/20 transition-colors group space-y-6">
+                    <p class="text-on-surface-variant leading-relaxed font-body text-lg italic">
+                        "Galactic's backtesting saved me countless hours and significantly improved my entry points. My monthly P&L is up <strong class="text-primary">40%</strong>!"
+                    </p>
+                    <div class="flex items-center gap-4">
+                        <img src="https://api.dicebear.com/7.x/personas/svg?seed=Anya" alt="Anya Sharma avatar" class="w-12 h-12 rounded-full border-2 border-primary/50"/>
+                        <div>
+                            <p class="font-headline font-bold text-on-surface">Anya Sharma</p>
+                            <p class="text-on-surface-variant text-sm">Senior Quant Analyst</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Testimonial 2 -->
+                <div class="p-8 rounded-xl bg-surface-container-low/40 border border-outline-variant/5 hover:border-primary/20 transition-colors group space-y-6">
+                    <p class="text-on-surface-variant leading-relaxed font-body text-lg italic">
+                        "The AI section is a game-changer. It's like having a co-pilot for market analysis. I've seen a <strong class="text-primary">2x improvement</strong> in my trade conviction."
+                    </p>
+                    <div class="flex items-center gap-4">
+                        <img src="https://api.dicebear.com/7.x/personas/svg?seed=Jax" alt="Jax Rylos avatar" class="w-12 h-12 rounded-full border-2 border-primary/50"/>
+                        <div>
+                            <p class="font-headline font-bold text-on-surface">Jax 'The Trader' Rylos</p>
+                            <p class="text-on-surface-variant text-sm">Independent Trader</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Testimonial 3 -->
+                <div class="p-8 rounded-xl bg-surface-container-low/40 border border-outline-variant/5 hover:border-primary/20 transition-colors group space-y-6">
+                    <p class="text-on-surface-variant leading-relaxed font-body text-lg italic">
+                        "Finally, a journal that actually helps me learn. My consistency has never been better, reducing my emotional trades by <strong class="text-primary">50%</strong>."
+                    </p>
+                    <div class="flex items-center gap-4">
+                        <img src="https://api.dicebear.com/7.x/personas/svg?seed=Kaelen" alt="Kaelen Varr avatar" class="w-12 h-12 rounded-full border-2 border-primary/50"/>
+                        <div>
+                            <p class="font-headline font-bold text-on-surface">Kaelen Varr</p>
+                            <p class="text-on-surface-variant text-sm">Day Trader</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing Section -->
+        <section id="pricing" class="mt-48 space-y-20 relative z-10">
+            <div class="text-center space-y-4 max-w-2xl mx-auto">
+                <span class="font-label text-sm text-secondary tracking-[0.2em] font-bold uppercase">Investment in Growth</span>
+                <h2 class="text-4xl md:text-5xl font-headline font-bold text-on-surface tracking-tight">Choose Your Flight Path</h2>
+                <p class="text-on-surface-variant font-body">Select the plan that aligns with your trading ambitions. All plans include a 14-day free trial.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10 items-stretch">
+                <!-- Pricing Tier 1: Explorer -->
+                <div class="p-10 rounded-xl bg-surface-container-low/40 border border-outline-variant/5 hover:border-primary/20 transition-colors group flex flex-col justify-between space-y-8">
+                    <div class="space-y-4">
+                        <h3 class="text-2xl font-headline font-bold text-on-surface">Explorer</h3>
+                        <p class="text-on-surface-variant">For new navigators charting their first course.</p>
+                        <p class="text-5xl font-headline font-extrabold text-primary">$29<span class="text-lg text-on-surface-variant">/month</span></p>
+                        <ul class="space-y-3 text-on-surface-variant text-base">
+                            <li class="flex items-center gap-3"><span class="material-symbols-outlined text-secondary">check</span>Basic Backtesting Engine</li>
+                            <li class="flex items-center gap-3"><span class="material-symbols-outlined text-secondary">check</span>Trading Journal (Limited Entries)</li>
+                            <li class="flex items-center gap-3"><span class="material-symbols-outlined text-secondary">check</span>Fundamental AI Insights</li>
+                            <li class="flex items-center gap-3"><span class="material-symbols-outlined text-secondary">check</span>Standard Market Data</li>
+                            <li class="flex items-center gap-3"><span class="material-symbols-outlined text-secondary">check</span>Community Forum Access</li>
+                        </ul>
+                    </div>
+                    <button class="btn-stitch-primary bg-primary-container text-on-primary-container hover:bg-primary-container/80">Start Explorer Trial</button>
+                </div>
+
+                <!-- Pricing Tier 2: Navigator (Highlighted) -->
+                <div class="p-10 rounded-xl bg-surface-container/60 border border-primary/20 shadow-xl pricing-card-highlight flex flex-col justify-between space-y-8 relative overflow-hidden">
+                    <div class="absolute -top-4 -right-4 bg-tertiary text-on-tertiary px-4 py-1 rounded-bl-lg text-xs font-bold uppercase rotate-12 translate-x-1/2 translate-y-1/2">Popular</div>
+                    <div class="space-y-4">
+                        <h3 class="text-2xl font-headline font-bold text-on-surface">Navigator</h3>
+                        <p class="text-on-surface-variant">For seasoned traders seeking advanced tools.</p>
+                        <p class="text-5xl font-headline font-extrabold text-primary">$79<span class="text-lg text-on-surface-variant">/month</span></p>
+                        <ul class="space-y-3 text-on-surface-variant text-base">
+                            <li class="flex items-center gap-3"><span class="material-symbols-outlined text-secondary">check</span>Advanced Backtesting Engine</li>
+                            <li class="flex items-center gap-3"><span class="material-symbols-outlined text-secondary">check</span>Unlimited Trading Journal</li>
+                            <li class="flex items-center gap-3"><span class="material-symbols-outlined text-secondary">check</span>Comprehensive AI Insights</li>
+                            <li class="flex items-center gap-3"><span class="material-symbols-outlined text-secondary">check</span>Real-time Premium Market Data</li>
+                            <li class="flex items-center gap-3"><span class="material-symbols-outlined text-secondary">check</span>Priority Community Support</li>
+                            <li class="flex items-center gap-3"><span class="material-symbols-outlined text-secondary">check</span>Customizable Dashboards</li>
+                        </ul>
+                    </div>
+                    <button class="btn-stitch-primary">Start Navigator Trial</button>
+                </div>
+
+                <!-- Pricing Tier 3: Cosmic Elite -->
+                <div class="p-10 rounded-xl bg-surface-container-low/40 border border-outline-variant/5 hover:border-primary/20 transition-colors group flex flex-col justify-between space-y-8">
+                    <div class="space-y-4">
+                        <h3 class="text-2xl font-headline font-bold text-on-surface">Cosmic Elite</h3>
+                        <p class="text-on-surface-variant">For professional firms and high-frequency explorers.</p>
+                        <p class="text-5xl font-headline font-extrabold text-primary">$199<span class="text-lg text-on-surface-variant">/month</span></p>
+                        <ul class="space-y-3 text-on-surface-variant text-base">
+                            <li class="flex items-center gap-3"><span class="material-symbols-outlined text-secondary">check</span>Enterprise Backtesting Suite</li>
+                            <li class="flex items-center gap-3"><span class="material-symbols-outlined text-secondary">check</span>Advanced Journal Analytics</li>
+                            <li class="flex items-center gap-3"><span class="material-symbols-outlined text-secondary">check</span>Predictive AI Models</li>
+                            <li class="flex items-center gap-3"><span class="material-symbols-outlined text-secondary">check</span>Ultra-low Latency Data Feeds</li>
+                            <li class="flex items-center gap-3"><span class="material-symbols-outlined text-secondary">check</span>Dedicated Account Manager</li>
+                            <li class="flex items-center gap-3"><span class="material-symbols-outlined text-secondary">check</span>API Access & Integrations</li>
+                        </ul>
+                    </div>
+                    <button class="btn-stitch-primary bg-primary-container text-on-primary-container hover:bg-primary-container/80">Contact Sales</button>
+                </div>
+            </div>
+            <p class="text-center text-on-surface-variant text-sm pt-8">All plans include a <strong class="text-primary">14-day free trial</strong>. No credit card required to start.</p>
+        </section>
+
+        <!-- Final CTA / Image - Replicated from Stitch reference -->
+        <div class="mt-48 rounded-2xl overflow-hidden h-[400px] relative border border-outline-variant/10 z-10">
+            <img alt="Earth view from satellite at night with glowing city lights and atmospheric depth" class="w-full h-full object-cover grayscale opacity-40 hover:grayscale-0 transition-all duration-700" data-alt="Earth viewed from a high altitude satellite at night showing glowing golden city lights against the deep black void of space" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCeYWEm8bD7yCnon-BlB8aMmXka14UMGUGCCAIUZd1yOQGVWanrBr-f8vF9Lg4ybiVJlPy--XcCMyIZ2EloYB20ay4pFq_d8KoamFPdEZrRwPHkJhEbi6pns3k-Sv_cgM2f53FnaqgTsP5Ud97dWyVapO9_fDOrSQf_DYMnwABuBpKp0Hdm3NizT9SPgaMnt-P_hRmcEiHxYAM4C62pT8VPO3GWEvDelW0aEPsiA4melqMkyQ8qta3dXGWnBIyJVt_Uo8SeV6xdU"/>
+            <div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest via-transparent to-transparent"></div>
+            <div class="absolute bottom-12 left-12 right-12 flex flex-col md:flex-row justify-between items-end md:items-center gap-6">
+                <div class="max-w-xl">
+                    <h3 class="text-3xl font-headline font-bold text-on-surface mb-2 tracking-tight">Ready to escape the trading void?</h3>
+                    <p class="text-on-surface-variant">Stop making blind trades and start building a validated, profitable strategy today.</p>
+                </div>
+                <button class="bg-primary text-on-primary font-bold px-8 py-4 rounded-xl flex items-center gap-2 hover:bg-secondary transition-all">
+                    Start Your Free Trial <span class="material-symbols-outlined">rocket</span>
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer - Replicated from Stitch reference -->
+    <footer class="bg-surface-container-lowest w-full py-12 border-t border-on-surface/10 pt-16 relative z-10">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-12 px-8 max-w-7xl mx-auto font-body text-sm">
+            <div class="space-y-6">
+                <div class="text-lg font-black tracking-widest text-on-surface">GALACTIC</div>
+                <p class="text-on-surface/50 leading-relaxed max-w-xs">
+                    The premier destination for cross-asset trading in the digital age. Built for speed, scale, and clarity.
+                </p>
+            </div>
+            <div class="space-y-4">
+                <h4 class="text-primary font-bold uppercase tracking-widest text-xs">Resources</h4>
+                <ul class="space-y-2">
+                    <li><a class="text-on-surface/50 hover:text-secondary transition-colors" href="features.html#journal">Journal</a></li>
+                    <li><a class="text-on-surface/50 hover:text-secondary transition-colors" href="features.html#backtesting">Backtesting</a></li>
+                    <li><a class="text-on-surface/50 hover:text-secondary transition-colors" href="features.html#ai-insights">AI Insights</a></li>
+                </ul>
+            </div>
+            <div class="space-y-4">
+                <h4 class="text-primary font-bold uppercase tracking-widest text-xs">Legal</h4>
+                <ul class="space-y-2">
+                    <li><a class="text-on-surface/50 hover:text-secondary transition-colors" href="#">Privacy Policy</a></li>
+                    <li><a class="text-on-surface/50 hover:text-secondary transition-colors" href="#">Terms of Service</a></li>
+                    <li><a class="text-on-surface/50 hover:text-secondary transition-colors" href="#">Compliance</a></li>
+                </ul>
+            </div>
+            <div class="space-y-4">
+                <h4 class="text-primary font-bold uppercase tracking-widest text-xs">Community</h4>
+                <ul class="space-y-2">
+                    <li><a class="text-on-surface/50 hover:text-secondary transition-colors flex items-center gap-2" href="#">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="text-on-surface/50 hover:text-secondary transition-colors">
+                            <path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.37-.83.49-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.4 7.61 3.56 5.1c-.37.63-.58 1.37-.58 2.18 0 1.49.75 2.81 1.91 3.56-.7-.02-1.37-.21-1.95-.5v.07c0 2.08 1.48 3.82 3.44 4.21-.36.1-.74.15-1.13.15-.27 0-.53-.03-.79-.08 1.48 4.21 4.59 5.79 8.63 5.82-1.47 1.15-3.33 1.84-5.36 1.84-.35 0-.7-.02-1.05-.06C3.78 20.35 6.47 21 9.25 21c7.55 0 11.67-6.25 11.67-11.67 0-.18-.01-.37-.01-.55.8-.58 1.49-1.3 2.04-2.13z"/>
+                        </svg>
+                        <span>Twitter/X</span>
+                    </a></li>
+                    <li><a class="text-on-surface/50 hover:text-secondary transition-colors flex items-center gap-2" href="#">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="text-on-surface/50 hover:text-secondary transition-colors">
+                            <path d="M20.92 2.12c-.93-.65-2.07-.99-3.26-.99-1.81 0-3.41.87-4.48 2.37-1.07-1.5-2.67-2.37-4.48-2.37-1.19 0-2.33.34-3.26.99C4.42 2.77 3 4.5 3 6.5c0 1.5.7 2.8 1.8 3.7.1.1.2.2.3.3.4.3.8.6 1.3.9.5.3 1 .6 1.6.9.6.3 1.2.6 1.9.8.7.2 1.4.3 2.1.3h.01c.7 0 1.4-.1 2.1-.3.7-.2 1.3-.5 1.9-.8.6-.3 1.1-.6 1.6-.9.5-.3.9-.6 1.3-.9.1-.1.2-.2.3-.3 1.1-.9 1.8-2.2 1.8-3.7 0-2-1.42-3.73-3.08-4.38zM12 14c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zM12 16c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zM12 18c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/>
+                        </svg>
+                        <span>Discord</span>
+                    </a></li>
+                    <li><a class="text-on-surface/50 hover:text-secondary transition-colors flex items-center gap-2" href="#">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="text-on-surface/50 hover:text-secondary transition-colors">
+                            <path d="M20.447 20.452h-3.554v-5.564c0-1.328-.027-3.044-1.852-3.044-1.853 0-2.136 1.445-2.136 2.951v5.657h-3.554V9h3.416v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.064-2.071 2.062 2.062 0 012.064-2.072c1.132 0 2.064.931 2.064 2.072 0 1.141-.932 2.071-2.064 2.071zm1.787 13.019H3.55v-11.66h3.574v11.66zM22.227 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.456c.98 0 1.773-.773 1.773-1.729V1.729C24 .774 23.207 0 22.227 0z"/>
+                        </svg>
+                        <span>LinkedIn</span>
+                    </a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-8 mt-16 pt-8 border-t border-outline-variant/10 flex flex-col md:flex-row justify-between items-center gap-4">
+            <p class="text-on-surface/50">© 2024 Galactic Trading. All rights reserved.</p>
+            <div class="flex items-center gap-6">
+                <span class="w-2 h-2 rounded-full bg-secondary-fixed shadow-[0_0_10px_rgba(137,206,255,0.8)]"></span>
+                <span class="text-xs text-on-surface/70 font-label tracking-widest uppercase">System Status: All Nodes Optimal</span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="shared.js"></script>
+    <script src="animations.js"></script>
+</body>
+</html>
