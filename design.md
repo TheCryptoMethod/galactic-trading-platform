@@ -1,80 +1,77 @@
-# Design System: Galactic Modernism
+# Design System Strategy: Galactic Liquidity
 
-## 1. Overview & Creative North Star
-**Creative North Star: The Celestial Horizon**
+## 1. Overview & Creative North Star: "The Celestial Ledger"
+This design system moves away from the rigid, spreadsheet-like nature of traditional finance and toward "The Celestial Ledger." The North Star for this system is **Astral Depth**. We are not building a flat interface; we are building a viewport into a digital nebula. 
 
-This design system moves away from the "boxy" nature of traditional fintech and trading platforms. Instead, it adopts an editorial, cinematic approach to digital interface design. By leveraging the vastness of deep space, we treat the screen not as a flat surface, but as a window into a three-dimensional void. 
+The experience must feel weightless yet authoritative. We achieve this through **intentional asymmetry**, where data visualizations (orbital patterns) break the vertical flow of the grid, and **chromatic depth**, where the dark purple and black background isn't a wall, but an infinite void. Elements should feel like they are floating in space, held together by gravitational pull rather than boxes and lines.
 
-The aesthetic identity is defined by **Atmospheric Depth**. We break the "template" look through intentional asymmetry, where large-scale 3D galactic elements bleed off the canvas, and typography is treated with the precision of a high-end fashion magazine. We prioritize breathing room over density, using the "Deep Space" concept to create a sense of infinite scale and premium exclusivity.
+---
 
-## 2. Colors & Atmospheric Tones
-The palette is rooted in the void of the universe, using varying levels of "darkness" to define structure rather than light.
-
-### The Palette
-- **Core Void:** `surface` (#131313) serves as our foundation.
-- **Nebula Accents:** `primary` (#d0bcff) and `secondary` (#89ceff) provide the ethereal glow of distant stars.
-- **Supernova CTA:** `tertiary` (#ffb690) is reserved strictly for high-conversion moments, slicing through the cool tones with heat.
+## 2. Colors & Surface Philosophy
+The palette is rooted in the `surface` (#0e0e0e), acting as the vacuum of space. The neon accents are not just highlights; they are "light sources" that cast ambient glows on surrounding elements.
 
 ### The "No-Line" Rule
-Traditional 1px solid borders are strictly prohibited for sectioning content. To define boundaries, designers must use:
-1.  **Tonal Shifts:** Transitioning from `surface` to `surface-container-low` to create soft regionality.
-2.  **Negative Space:** Using large steps in the spacing scale (e.g., `20` or `24`) to denote the end of a narrative block.
+**Explicit Instruction:** You are prohibited from using 1px solid borders to section off the UI. 
+*   **The Alternative:** Define boundaries through background shifts. Place a `surface-container-low` (#131313) component against a `surface` (#0e0e0e) background. 
+*   **The Goal:** A seamless, "infinite" aesthetic where the eye perceives structure through tonal weight rather than wireframe outlines.
 
 ### Surface Hierarchy & Nesting
-Treat the UI as a series of floating celestial bodies. 
-- Use `surface-container-lowest` (#0e0e0e) for the background to ground the experience.
-- Use `surface-container` (#201f1f) for primary content containers.
-- Use `surface-bright` (#3a3939) for elevated interactive elements.
-This creates a "nested" depth where the eye perceives layers of gas and shadow rather than a flat grid.
+Treat the UI as stacked sheets of obsidian and frosted glass:
+*   **Base:** `surface` (#0e0e0e)
+*   **Primary Containers:** `surface-container` (#1a1919) for main dashboard modules.
+*   **Nested Elements:** `surface-container-high` (#201f1f) for inner cards or interactive zones.
+*   **The "Glass & Gradient" Rule:** Floating panels (Modals, Hover Cards) must use Glassmorphism. Combine `surface-variant` (#262626) at 60% opacity with a `backdrop-blur` of 12px. Apply a subtle linear gradient from `primary` (#a1faff) to `secondary` (#bf81ff) at a 5% opacity overlay to give the glass a "soul."
 
-### The "Glass & Gradient" Rule
-To achieve the "High-End" finish, apply `backdrop-blur` (20px+) to any floating element. Use subtle linear gradients for CTAs, transitioning from `primary` (#d0bcff) to `primary-container` (#a078ff) at a 135-degree angle. This provides a "soul" to the components that flat colors cannot replicate.
+---
 
-## 3. Typography
-Our typography is the "Voice of Authority." It is clean, expansive, and highly legible.
+## 3. Typography: The Editorial Edge
+We utilize a high-contrast typographic scale to ensure the dashboard feels like a premium data-journal.
 
-*   **Display & Headlines (Manrope):** These are our "Editorial Hooks." Use `display-lg` for hero statements with a `-0.02em` letter spacing. The heavier weights of Manrope provide a technical yet sophisticated feel.
-*   **Body (Inter):** Inter provides the functional clarity required for trading data. Always use `body-lg` for primary marketing copy to maintain a premium, spacious feel.
-*   **Technical Labels (Space Grotesk):** For micro-data, labels, and "galactic coordinates" (metadata), use Space Grotesk. Its monospaced characteristics evoke a futuristic, cockpit-instrumentation aesthetic.
+*   **Display (Space Grotesk):** Used for big-ticket numbers (e.g., Portfolio Balance). `display-lg` (3.5rem) should feel tectonic. 
+*   **Headline (Space Grotesk):** For module titles. Use `headline-sm` (1.5rem) to command attention without crowding the "glass" containers.
+*   **Body & Titles (Manrope):** The workhorse. `body-md` (0.875rem) provides the legibility needed for complex trade data.
+*   **Labels (Inter):** Reserved for micro-data (e.g., "24h Change"). Use `label-sm` (0.6875rem) with increased letter-spacing (0.05em) to maintain a "technical/NASA" feel.
 
-**Hierarchy Note:** Always maintain a high contrast between `headline-lg` and `body-md`. If everything is important, nothing is.
+---
 
-## 4. Elevation & Depth
-Depth in this system is achieved through **Tonal Layering**, mimicking how light behaves in a vacuum.
+## 4. Elevation & Depth: Tonal Layering
+Traditional shadows have no place in a space theme. We use **Ambient Glows** and **Tonal Lift**.
 
-*   **The Layering Principle:** Avoid shadows where possible. Instead, place a `surface-container-high` element on top of a `surface-container-low` background. The slight shift in gray-value creates a more modern, sophisticated "lift."
-*   **Ambient Shadows:** If an element must "float" (like a dropdown or modal), use a massive blur (40px-64px) with the color `primary` at 5% opacity. This creates a "glow" rather than a "shadow," suggesting the element is self-illuminated.
-*   **The "Ghost Border" Fallback:** If containment is required for accessibility, use the `outline-variant` token at **15% opacity**. This creates a whisper of an edge that disappears into the background, maintaining the minimalist ethos.
-*   **Signature Grain:** Apply a 3% opacity film grain texture to the `surface` layer. This breaks the digital perfection of the hex codes and adds a tactile, cinematic quality.
+*   **The Layering Principle:** To lift a trading ticket from the dashboard, shift its background from `surface-container-low` to `surface-container-highest`.
+*   **Ambient Glows:** Instead of a drop shadow, use a `primary-dim` (#00e5ee) outer glow with a blur radius of 40px and an opacity of 8% for active states. This simulates a neon light reflecting off a dark surface.
+*   **The "Ghost Border" Fallback:** If accessibility requires a border, use `outline-variant` (#494847) at 15% opacity. It should be felt, not seen.
+*   **Motion (Framer Motion):** Elements should not "pop" in. They should "drift" with a 0.4s ease-out duration and a slight 2% scale-up, mimicking an object entering a gravitational field.
 
-## 5. Components
+---
 
-### Buttons
-*   **Primary:** `primary` background with a subtle outer glow (0px 0px 15px `primary_fixed_variant` at 30% opacity). Roundedness: `md` (0.375rem).
-*   **Secondary (Glass):** Semi-transparent `surface-variant` with a `backdrop-blur`.
-*   **Tertiary (Supernova):** `tertiary` (#ffb690) for the "Trade Now" or "Launch" actions. Use high-contrast `on-tertiary` text.
+## 5. Components & Interface Patterns
 
-### Cards & Marketing Blocks
-*   **Structure:** No divider lines. Separate content using the `spacing-8` (2.75rem) value.
-*   **Visuals:** Every card should feature a "Corner Glow"â€”a radial gradient of `primary` at 5% opacity tucked into one corner to suggest light hitting the edge of a planet.
+### Buttons (The Kinetic Triggers)
+*   **Primary:** A vibrant gradient from `primary` (#a1faff) to `primary-dim` (#00e5ee). Text should be `on-primary` (#006165). No border.
+*   **Secondary:** `surface-container-highest` background with a `primary` "Ghost Border" (20% opacity).
+*   **Tertiary:** Pure text using `secondary` (#bf81ff) with a subtle `hover:glow` effect.
+
+### Cards & Data Lists
+*   **Anti-Divider Rule:** Never use `<hr />` or `border-b`. Use a `2.5` (0.5rem) vertical gap from the spacing scale or shift the background of alternating rows by 2% luminosity.
+*   **Orbital Visualizations:** For asset allocation, avoid standard pie charts. Use concentric "orbital rings" using `primary`, `secondary`, and `tertiary` tokens with varying stroke-dasharrays to represent percentages.
 
 ### Input Fields
-*   **Style:** Underline-only or subtle "Glass" containers. Focus states should trigger a soft transition of the border-bottom from `outline-variant` to `primary`. 
-*   **Helper Text:** Use `label-sm` in `on-surface-variant` with `0.05em` tracking.
+*   **State:** The default state is a `surface-container-lowest` (#000000) well. 
+*   **Focus State:** The container transitions to `surface-container-high` (#201f1f) with a `primary` glow. The cursor/caret should be `tertiary` (#8eff71) for a high-contrast "terminal" feel.
 
-### Signature Component: The "Nebula Pulse"
-For real-time trading indicators, do not use standard green/red dots. Use a soft, breathing radial gradient (Pulse) that glows from `secondary` (for up) or `error` (for down), creating a living, organic interface.
+### Trading Chips
+*   **Sentiment Chips:** Use `tertiary-container` (#2ff801) for Long/Buy and `error-container` (#a70138) for Short/Sell, but keep the background opacity at 15% to prevent the neon from overpowering the data.
+
+---
 
 ## 6. Do's and Don'ts
 
-### Do
-*   **Do** use generous tracking (`0.02em`+) on all labels to feel "expensive."
-*   **Do** let 3D assets overlap section boundaries to break the grid.
-*   **Do** use `surface-container-lowest` for the footer to "sink" the page into the void.
-*   **Do** prioritize asymmetry in layoutâ€”place a headline on the left and a 3D element floating slightly off-center to the right.
+### Do:
+*   **Use Asymmetry:** Place the "Orbital Visualization" off-center to create a sense of dynamic movement.
+*   **Embrace the Void:** Use the `20` (4.5rem) spacing token between major dashboard modules to let the theme "breathe."
+*   **Layer Glows:** Use multiple thin, layered box-shadows with neon colors to create a realistic "neon tube" effect on active buttons.
 
-### Don't
-*   **Don't** use 100% white (#FFFFFF). Always use `on-surface` (#e5e2e1) to prevent eye strain on the dark background.
-*   **Don't** use standard shadows. If it doesn't glow, it shouldn't have an outer effect.
-*   **Don't** use sidebars or dashboards. This is a marketing-first, high-conversion experience; keep the user on a single, focused vertical scroll.
-*   **Don't** use hard corners. Always utilize the `md` or `lg` roundedness scale to keep the tech feeling approachable and "soft-tech."
+### Don't:
+*   **Don't use 100% white:** Use `on-surface-variant` (#adaaaa) for secondary text to keep the "dark space" atmosphere intact. Pure white (`on-background`) is for critical data only.
+*   **Don't use sharp corners:** While we are futuristic, 100% sharp corners feel "retro-brutalist." Use the `md` (0.375rem) or `lg` (0.5rem) roundedness tokens to make the glass feel "polished."
+*   **Don't clutter:** If a screen feels busy, increase the background "void" (`surface`) rather than adding more containers.

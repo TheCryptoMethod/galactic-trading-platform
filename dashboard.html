@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard — Celestial Trade Terminal</title>
+    <meta name="description" content="Access your futuristic crypto trading dashboard with orbital visualizations, real-time market data, and AI-powered trading signals, all presented with a dark space theme and neon accents.">
+    <meta property="og:title" content="Dashboard — Celestial Trade Terminal">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="shared.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <!-- Custom styles from Stitch reference -->
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(19, 19, 24, 0.6);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .cyan-glow {
+            box-shadow: 0 0 20px rgba(143, 245, 255, 0.15);
+        }
+        .orange-glow {
+            box-shadow: 0 0 20px rgba(255, 115, 70, 0.2);
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body overflow-x-hidden selection:bg-primary/30">
+    <div id="scroll-progress"></div>
+    <!-- Stitch TopAppBar - Replaces template's main-nav -->
+    <header class="fixed top-0 w-full z-50 bg-[#131318]/60 backdrop-blur-xl border-b border-[#8ff5ff]/10 flex justify-between items-center px-6 h-20 w-full">
+        <div class="flex items-center gap-3">
+            <span class="material-symbols-outlined text-[#8ff5ff] text-2xl" style="font-variation-settings: 'FILL' 1;">rocket_launch</span>
+            <h1 class="text-2xl font-bold tracking-tighter text-[#8ff5ff] drop-shadow-[0_0_8px_rgba(143,245,255,0.5)] font-['Space_Grotesk'] tracking-wider uppercase">KINETIC ETHER</h1>
+        </div>
+        <div class="flex items-center gap-4">
+            <div class="hidden md:flex gap-8 items-center">
+                <a class="font-['Space_Grotesk'] text-[#8ff5ff] border-b-2 border-[#8ff5ff] uppercase tracking-wider text-sm" href="dashboard.html">Terminal</a>
+                <a class="font-['Space_Grotesk'] text-[#f8f5fd]/60 hover:text-[#8ff5ff] transition-all uppercase tracking-wider text-sm" href="features.html">Markets</a>
+                <a class="font-['Space_Grotesk'] text-[#f8f5fd]/60 hover:text-[#8ff5ff] transition-all uppercase tracking-wider text-sm" href="pricing.html">Assets</a>
+            </div>
+            <div class="h-10 w-10 rounded-full border border-primary/20 p-0.5">
+                <img alt="User Portfolio Avatar" class="h-full w-full object-cover rounded-full" src="https://api.dicebear.com/7.x/personas/svg?seed=Aurora"/>
+            </div>
+        </div>
+    </header>
+
+    <main class="pt-20 pb-24 md:pb-0">
+        <!-- DarkProjectHero -->
+        <section id="hero-dashboard" class="relative min-h-[751px] flex flex-col justify-center items-center overflow-hidden px-6 text-center z-10">
+            <div class="absolute inset-0 z-0">
+                <video autoplay="" class="w-full h-full object-cover opacity-40 grayscale contrast-125" loop="" muted="" playsinline="">
+                    <source src="https://videos.pexels.com/video-files/18526841/uhd_30fps.mp4" type="video/mp4"/>
+                </video>
+                <div class="absolute inset-0 bg-gradient-to-b from-surface/0 via-surface/40 to-surface"></div>
+            </div>
+            <div class="relative z-10 max-w-4xl mx-auto space-y-8">
+                <div class="inline-flex items-center gap-2 px-3 py-1 bg-tertiary/10 border border-tertiary/20 rounded-lg">
+                    <span class="w-2 h-2 bg-tertiary rounded-full animate-pulse"></span>
+                    <span class="font-label text-xs tracking-widest text-tertiary uppercase">High-Frequency Execution Active</span>
+                </div>
+                <h2 class="font-headline text-5xl md:text-8xl font-bold tracking-tighter text-on-surface flex flex-col">
+                    <span class="text-tertiary drop-shadow-[0_0_15px_rgba(255,115,70,0.4)]">Vivid.</span>
+                    <span class="text-on-surface">Progressive.</span>
+                    <span class="text-primary drop-shadow-[0_0_15px_rgba(143,245,255,0.4)]">Limitless.</span>
+                </h2>
+                <p class="font-body text-on-surface-variant text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
+                    The universe's most advanced high-frequency execution engine. Experience zero-latency arbitrage across decentralized constellations.
+                </p>
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+                    <button class="w-full sm:w-auto px-10 py-4 bg-gradient-to-br from-primary to-primary-container text-on-primary font-headline font-bold uppercase tracking-widest rounded-sm hover:scale-105 transition-transform duration-300">
+                        Initiate Trade
+                    </button>
+                    <button class="w-full sm:w-auto px-10 py-4 border border-outline-variant/30 glass-panel text-on-surface font-headline font-bold uppercase tracking-widest rounded-sm hover:bg-surface-bright transition-all">
+                        View Nodes
+                    </button>
+                </div>
+            </div>
+            <!-- Kinetic Scroll Indicator -->
+            <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-50">
+                <span class="font-label text-[10px] tracking-[0.3em] uppercase">Engage Scroll</span>
+                <div class="w-[1px] h-12 bg-gradient-to-b from-primary to-transparent"></div>
+            </div>
+        </section>
+
+        <!-- RuixenStats -->
+        <section id="dashboard-stats" class="py-20 px-6 max-w-7xl mx-auto relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Volume Stat -->
+                <div class="glass-panel p-8 rounded-lg border border-primary/5 space-y-4 cyan-glow">
+                    <div class="flex justify-between items-start">
+                        <span class="font-label text-xs text-primary/60 uppercase tracking-widest">Total Volume Traded</span>
+                        <span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">monitoring</span>
+                    </div>
+                    <div class="flex items-baseline gap-2">
+                        <span class="font-headline text-4xl font-bold text-on-surface">$14.2B</span>
+                        <span class="text-primary text-sm font-medium">+12.4%</span>
+                    </div>
+                    <div class="h-1 w-full bg-surface-container-highest rounded-full overflow-hidden">
+                        <div class="h-full bg-primary w-[75%]"></div>
+                    </div>
+                </div>
+                <!-- Active Nodes Stat -->
+                <div class="glass-panel p-8 rounded-lg border border-tertiary/5 space-y-4 orange-glow">
+                    <div class="flex justify-between items-start">
+                        <span class="font-label text-xs text-tertiary/60 uppercase tracking-widest">Active Nodes</span>
+                        <span class="material-symbols-outlined text-tertiary" style="font-variation-settings: 'FILL' 1;">hub</span>
+                    </div>
+                    <div class="flex items-baseline gap-2">
+                        <span class="font-headline text-4xl font-bold text-on-surface">8,942</span>
+                        <span class="text-tertiary text-sm font-medium">Stable</span>
+                    </div>
+                    <div class="h-1 w-full bg-surface-container-highest rounded-full overflow-hidden">
+                        <div class="h-full bg-tertiary w-[92%] shadow-[0_0_8px_rgba(255,115,70,0.5)]"></div>
+                    </div>
+                </div>
+                <!-- Global Latency Stat -->
+                <div class="glass-panel p-8 rounded-lg border border-secondary/5 space-y-4">
+                    <div class="flex justify-between items-start">
+                        <span class="font-label text-xs text-secondary/60 uppercase tracking-widest">Global Latency</span>
+                        <span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">speed</span>
+                    </div>
+                    <div class="flex items-baseline gap-2">
+                        <span class="font-headline text-4xl
