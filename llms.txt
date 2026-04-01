@@ -1,0 +1,8 @@
+# Galactic Trading Platform
+
+> A futuristic crypto trading dashboard featuring orbital visualizations, real-time market data, and AI-powered trading signals, designed with a dark space theme and neon accents.
+
+## Pages
+- [Home](/index.html): landing
+- [Features](/features.html): landing
+- [Pricing](/pricing.html): pricing

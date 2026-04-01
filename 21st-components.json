@@ -1,0 +1,262 @@
+{
+  "index": [
+    {
+      "section": "navbar",
+      "name": "Navbar",
+      "code_length": 7053,
+      "deps": {
+        "npm": [
+          "lucide-react"
+        ],
+        "shadcn": [
+          "liquid-glass-button"
+        ]
+      }
+    },
+    {
+      "section": "hero",
+      "name": "Hero Section",
+      "code_length": 3241,
+      "deps": {
+        "npm": [
+          "framer-motion"
+        ],
+        "shadcn": [
+          "button"
+        ]
+      }
+    },
+    {
+      "section": "features",
+      "name": "Features 2",
+      "code_length": 3440,
+      "deps": {
+        "npm": [
+          "lucide-react"
+        ],
+        "shadcn": [
+          "card"
+        ]
+      }
+    },
+    {
+      "section": "stats",
+      "name": "Ruixen Stats",
+      "code_length": 3212,
+      "deps": {
+        "npm": [],
+        "shadcn": [
+          "button"
+        ]
+      }
+    },
+    {
+      "section": "testimonials",
+      "name": "Testimonial Slider",
+      "code_length": 5936,
+      "deps": {
+        "npm": [
+          "framer-motion",
+          "lucide-react"
+        ],
+        "shadcn": []
+      }
+    },
+    {
+      "section": "cta",
+      "name": "Call to Action",
+      "code_length": 1662,
+      "deps": {
+        "npm": [
+          "clsx",
+          "tailwind-merge"
+        ],
+        "shadcn": [
+          "button"
+        ]
+      }
+    },
+    {
+      "section": "footer",
+      "name": "footer",
+      "code_length": 7463,
+      "deps": {
+        "npm": [],
+        "shadcn": [
+          "button",
+          "card",
+          "input"
+        ]
+      }
+    }
+  ],
+  "features": [
+    {
+      "section": "navbar",
+      "name": "Navbar",
+      "code_length": 7053,
+      "deps": {
+        "npm": [
+          "lucide-react"
+        ],
+        "shadcn": [
+          "liquid-glass-button"
+        ]
+      }
+    },
+    {
+      "section": "hero",
+      "name": "Hero Section",
+      "code_length": 3241,
+      "deps": {
+        "npm": [
+          "framer-motion"
+        ],
+        "shadcn": [
+          "button"
+        ]
+      }
+    },
+    {
+      "section": "features",
+      "name": "Features 2",
+      "code_length": 3440,
+      "deps": {
+        "npm": [
+          "lucide-react"
+        ],
+        "shadcn": [
+          "card"
+        ]
+      }
+    },
+    {
+      "section": "stats",
+      "name": "Ruixen Stats",
+      "code_length": 3212,
+      "deps": {
+        "npm": [],
+        "shadcn": [
+          "button"
+        ]
+      }
+    },
+    {
+      "section": "testimonials",
+      "name": "Testimonial Slider",
+      "code_length": 5936,
+      "deps": {
+        "npm": [
+          "framer-motion",
+          "lucide-react"
+        ],
+        "shadcn": []
+      }
+    },
+    {
+      "section": "cta",
+      "name": "Call to Action",
+      "code_length": 1662,
+      "deps": {
+        "npm": [
+          "clsx",
+          "tailwind-merge"
+        ],
+        "shadcn": [
+          "button"
+        ]
+      }
+    },
+    {
+      "section": "footer",
+      "name": "footer",
+      "code_length": 7463,
+      "deps": {
+        "npm": [],
+        "shadcn": [
+          "button",
+          "card",
+          "input"
+        ]
+      }
+    }
+  ],
+  "pricing": [
+    {
+      "section": "navbar",
+      "name": "Navbar",
+      "code_length": 7053,
+      "deps": {
+        "npm": [
+          "lucide-react"
+        ],
+        "shadcn": [
+          "liquid-glass-button"
+        ]
+      }
+    },
+    {
+      "section": "hero",
+      "name": "Hero Section",
+      "code_length": 3241,
+      "deps": {
+        "npm": [
+          "framer-motion"
+        ],
+        "shadcn": [
+          "button"
+        ]
+      }
+    },
+    {
+      "section": "pricing",
+      "name": "Pricing Base",
+      "code_length": 6211,
+      "deps": {
+        "npm": [
+          "lucide-react"
+        ],
+        "shadcn": [
+          "button",
+          "card"
+        ]
+      }
+    },
+    {
+      "section": "faq",
+      "name": "Faqs 1",
+      "code_length": 3098,
+      "deps": {
+        "npm": [],
+        "shadcn": []
+      }
+    },
+    {
+      "section": "cta",
+      "name": "Call to Action",
+      "code_length": 1662,
+      "deps": {
+        "npm": [
+          "clsx",
+          "tailwind-merge"
+        ],
+        "shadcn": [
+          "button"
+        ]
+      }
+    },
+    {
+      "section": "footer",
+      "name": "footer",
+      "code_length": 7463,
+      "deps": {
+        "npm": [],
+        "shadcn": [
+          "button",
+          "card",
+          "input"
+        ]
+      }
+    }
+  ]
+}

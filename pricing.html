@@ -1,330 +1,405 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="dark" lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pricing — Dalim Protocol</title>
-    <meta name="description" content="Choose your ideal plan for Dalim Protocol, the futuristic crypto trading dashboard. Explore Orbital, Stellar, and Galactic tiers for advanced market insights and AI signals.">
-    <meta property="og:title" content="Pricing — Dalim Protocol">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="shared.css">
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+    <title>Pricing — galactic-trading-platform</title>
+    <meta name="description" content="Explore pricing plans for DALIM, your futuristic crypto trading dashboard. Choose from Starter, Pro, or Enterprise tiers for AI-powered signals, orbital visualizations, and real-time market data.">
+    <meta property="og:title" content="Pricing — galactic-trading-platform">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-dim": "#0e0e13",
+                        "secondary": "#a68cff",
+                        "surface-container-high": "#1f1f26",
+                        "on-secondary-fixed-variant": "#591bdc",
+                        "on-primary": "#005762",
+                        "tertiary-fixed": "#f189ff",
+                        "on-background": "#f9f5fd",
+                        "primary-container": "#00e3fd",
+                        "inverse-surface": "#fcf8ff",
+                        "tertiary-container": "#d501f9",
+                        "primary-fixed": "#00e3fd",
+                        "primary-fixed-dim": "#00d4ec",
+                        "on-tertiary-fixed-variant": "#650077",
+                        "on-primary-container": "#004d57",
+                        "outline-variant": "#48474d",
+                        "on-primary-fixed": "#003840",
+                        "surface-container-lowest": "#000000",
+                        "on-secondary-fixed": "#3b00a0",
+                        "inverse-primary": "#006976",
+                        "surface-tint": "#81ecff",
+                        "tertiary-dim": "#c500e6",
+                        "on-surface": "#f9f5fd",
+                        "surface-container": "#19191f",
+                        "surface-container-highest": "#25252d",
+                        "inverse-on-surface": "#55545b",
+                        "on-secondary": "#25006b",
+                        "primary-dim": "#00d4ec",
+                        "secondary-fixed-dim": "#cabaff",
+                        "surface-bright": "#2c2b33",
+                        "surface-container-low": "#131319",
+                        "outline": "#76747b",
+                        "on-tertiary": "#3c0048",
+                        "background": "#0e0e13",
+                        "secondary-container": "#591adc",
+                        "tertiary": "#e966ff",
+                        "secondary-dim": "#7e51ff",
+                        "error-dim": "#d7383b",
+                        "on-primary-fixed-variant": "#005762",
+                        "on-secondary-container": "#e4daff",
+                        "on-tertiary-container": "#000000",
+                        "tertiary-fixed-dim": "#eb71ff",
+                        "surface": "#0e0e13",
+                        "primary": "#81ecff",
+                        "secondary-fixed": "#d8caff",
+                        "on-error-container": "#ffa8a3",
+                        "error-container": "#9f0519",
+                        "surface-variant": "#25252d",
+                        "error": "#ff716c",
+                        "on-surface-variant": "#acaab1",
+                        "on-error": "#490006",
+                        "on-tertiary-fixed": "#2f0039"
+                    },
+                    fontFamily: {
+                        "headline": ["Space Grotesk"],
+                        "body": ["Space Grotesk"],
+                        "label": ["Space Grotesk"]
+                    },
+                    borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+                },
+            },
+        }
+    </script>
     <style>
-        /* Custom styles to match Stitch's glass-panel and other specific effects */
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-        }
-        .glass-panel {
-            background: rgba(19, 19, 24, 0.6);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-        }
-        /* Stitch's custom Tailwind config colors and fonts are assumed to be available or applied via arbitrary values */
-        /* For faithful reproduction, these are the colors from Stitch's config: */
-        /*
-        --color-primary: #8ff5ff;
-        --color-primary-container: #00eefc;
-        --color-on-primary-fixed: #003f43;
-        --color-secondary: #d674ff;
-        --color-on-secondary: #390050;
-        --color-tertiary: #ff7346;
-        --color-on-tertiary: #420d00;
-        --color-background: #0e0e13;
-        --color-on-background: #f8f5fd;
-        --color-surface: #0e0e13;
-        --color-on-surface: #f8f5fd;
-        --color-surface-container-low: #131318;
-        --color-surface-container-high: #1f1f26;
-        --color-surface-container-highest: #25252c;
-        --color-on-surface-variant: #acaab1;
-        --color-outline: #76747b;
-        --color-outline-variant: #48474d;
-        */
-        .font-headline { font-family: 'Space Grotesk', sans-serif; }
-        .font-body { font-family: 'Inter', sans-serif; }
-        .font-label { font-family: 'Space Grotesk', sans-serif; }
+        body { background-color: #0e0e13; color: #f9f5fd; font-family: 'Space Grotesk', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .glass { backdrop-filter: blur(24px); background: rgba(31, 31, 38, 0.4); }
+        .nebula-glow { box-shadow: 0 0 40px rgba(129, 236, 255, 0.1); }
+        .price-card-glow { transition: box-shadow 0.3s ease; }
+        .price-card-glow:hover { box-shadow: 0 0 30px rgba(129, 236, 255, 0.2); }
     </style>
+    <style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+    <link rel="stylesheet" href="shared.css">
 </head>
-<body class="bg-[#0e0e13] text-[#f8f5fd] font-body selection:bg-[#8ff5ff]/30">
+<body class="antialiased overflow-x-hidden">
     <div id="scroll-progress"></div>
-    <nav id="main-nav" class="bg-[#131318]/60 backdrop-blur-xl border-b border-[#8ff5ff]/15 fixed top-0 w-full z-50 shadow-[0_0_20px_rgba(143,245,255,0.06)]">
-        <div class="nav-container flex justify-between items-center px-6 py-4 max-w-full">
-            <a href="index.html" class="nav-logo flex items-center gap-2" data-page="index">
-                <span class="material-symbols-outlined text-[#8ff5ff] text-2xl">rocket_launch</span>
-                <span class="logo-text text-2xl font-bold tracking-tighter text-[#8ff5ff] drop-shadow-[0_0_8px_rgba(143,245,255,0.5)] font-headline uppercase">Dalim</span>
-            </a>
-            <div class="nav-links hidden md:flex items-center gap-8 font-label tracking-wider uppercase text-sm">
-                <a href="index.html" class="text-[#f8f5fd]/70 hover:text-[#8ff5ff] transition-colors" data-page="index">Terminal</a>
-                <a href="dashboard.html" class="text-[#f8f5fd]/70 hover:text-[#8ff5ff] transition-colors" data-page="dashboard">Orbits</a>
-                <a href="features.html" class="text-[#f8f5fd]/70 hover:text-[#8ff5ff] transition-colors" data-page="features">Signals</a>
-                <a href="pricing.html" class="text-[#8ff5ff] border-b-2 border-[#8ff5ff] pb-1" data-page="pricing">Pricing</a>
+    <!-- TopAppBar -->
+    <header class="bg-[#131319]/40 backdrop-blur-3xl docked full-width top-0 sticky z-50 border-b border-white/5 shadow-[0_4px_30px_rgba(0,0,0,0.1)]">
+        <div class="flex justify-between items-center w-full px-6 py-4 max-w-[1440px] mx-auto">
+            <div class="flex items-center gap-3">
+                <span class="material-symbols-outlined text-[#81ecff] text-2xl" data-icon="rocket_launch">rocket_launch</span>
+                <span class="text-2xl font-bold tracking-tighter text-[#81ecff] drop-shadow-[0_0_8px_rgba(129,236,255,0.5)] font-['Space_Grotesk']">DALIM</span>
             </div>
-            <button class="nav-hamburger md:hidden text-[#8ff5ff] hover:bg-[#8ff5ff]/10 p-2 rounded-lg transition-all duration-300" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
-                </svg>
-            </button>
+            <nav class="hidden md:flex items-center gap-8 font-['Space_Grotesk'] tracking-tight">
+                <a class="text-[#acaab1] hover:text-[#a68cff] transition-colors duration-300" href="index.html">Home</a>
+                <a class="text-[#acaab1] hover:text-[#a68cff] transition-colors duration-300" href="features.html">Features</a>
+                <a class="text-[#81ecff] border-b-2 border-[#81ecff] transition-colors duration-300" href="pricing.html">Pricing</a>
+                <a class="text-[#acaab1] hover:text-[#a68cff] transition-colors duration-300" href="#">About</a>
+            </nav>
+            <div class="flex items-center gap-4">
+                <button class="hidden sm:block text-[#acaab1] font-medium hover:text-[#81ecff] transition-colors">Login</button>
+                <button class="bg-gradient-to-br from-primary to-primary-container text-on-primary-container px-5 py-2 rounded-xl font-bold scale-95 active:scale-90 transition-transform shadow-[0_0_15px_rgba(129,236,255,0.3)]">Sign Up</button>
+            </div>
         </div>
-    </nav>
+    </header>
 
-    <main class="pt-16">
+    <main>
         <!-- Hero Section -->
-        <section id="hero" class="relative h-[707px] flex items-center justify-center overflow-hidden z-10">
+        <section id="hero" class="relative min-h-[618px] flex items-center justify-center pt-20 pb-32 overflow-hidden z-10">
             <div class="absolute inset-0 z-0">
-                <video autoplay loop muted playsinline class="w-full h-full object-cover opacity-40">
-                    <source src="https://videos.pexels.com/video-files/18526841/uhd_30fps.mp4" type="video/mp4"/>
-                </video>
-                <div class="absolute inset-0 bg-gradient-to-b from-transparent via-[#0e0e13]/20 to-[#0e0e13]"></div>
+                <img class="w-full h-full object-cover opacity-40" data-alt="cinematic view of a deep purple and cyan nebula with shimmering stars and distant planetary horizons in high definition" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgPZ3O8GIwgc17V99WUq1H44VKfT8WpoKD5NjkNShe5lb-3KIuwtkVjmeHYCjrAIdXir_R2m0fGogPcOjE4l1TYKUKnIdbpy3d4Bdz6OQRKwitudrgmX_qbWajfYZxJGxquw6khApv5sQzyM9x1uaBNAsNSt3MLoJ3FVgotv0wvX64mQsgeraTm1UGCgmi4i43ZezUqSK2Ugt2iwUPzthZXwvl-_KwNrqtkpy6Rg6UqEzeDXReLHlvU0B0mfvWypwMcewNUA1ogHw"/>
+                <div class="absolute inset-0 bg-gradient-to-b from-transparent via-surface-dim/80 to-surface-dim"></div>
             </div>
-            <div class="relative z-10 text-center px-6">
-                <div class="inline-block px-4 py-1 mb-6 glass-panel border border-[#8ff5ff]/20 rounded-full">
-                    <span class="font-label text-xs tracking-widest uppercase text-[#8ff5ff]">Protocol Pricing v.2.4</span>
-                </div>
-                <h1 class="font-headline text-5xl md:text-8xl font-bold tracking-tighter mb-4">
-                    Ascend to <span class="text-[#8ff5ff] italic">limitless</span> potential
+            <div class="relative z-10 max-w-5xl px-6 text-center">
+                <span class="inline-block py-1 px-3 mb-6 rounded-full border border-primary/30 bg-primary/10 text-primary text-xs font-bold tracking-[0.2em] uppercase">The Celestial Frontier</span>
+                <h1 class="text-5xl md:text-8xl font-extrabold tracking-tighter mb-6 bg-gradient-to-r from-on-surface via-primary to-secondary bg-clip-text text-transparent">
+                    Trade in the Nebula
                 </h1>
-                <p class="max-w-2xl mx-auto text-[#acaab1] text-lg md:text-xl font-body leading-relaxed mb-8">
-                    Choose your velocity. From individual orbital mechanics to multi-galaxy institutional infrastructure.
+                <p class="text-xl md:text-2xl text-on-surface-variant max-w-3xl mx-auto font-light leading-relaxed mb-10">
+                    AI-powered trading signals and orbital visualizations for the next generation of digital assets. Navigate the markets with cosmic precision.
                 </p>
-                <div class="flex flex-col md:flex-row gap-4 justify-center">
-                    <button class="bg-gradient-to-r from-[#8ff5ff] to-[#00eefc] text-[#003f43] font-label font-bold px-8 py-4 rounded-sm transition-transform active:scale-95 duration-200">
-                        LAUNCH TERMINAL
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
+                    <button class="w-full sm:w-auto bg-primary text-on-primary-container px-10 py-4 rounded-xl font-bold text-lg shadow-[0_0_30px_rgba(129,236,255,0.3)] hover:scale-105 transition-transform">
+                        Launch Terminal
                     </button>
-                    <button class="glass-panel border border-[#8ff5ff]/30 text-[#f8f5fd] font-label px-8 py-4 rounded-sm hover:bg-[#8ff5ff]/10 transition-all duration-300">
-                        VIEW PROTOCOL
+                    <button class="w-full sm:w-auto border border-outline-variant hover:border-primary/50 px-10 py-4 rounded-xl font-bold text-lg backdrop-blur-sm transition-all">
+                        View Signals
                     </button>
                 </div>
             </div>
         </section>
 
-        <!-- Pricing Bento Grid -->
+        <!-- Pricing Section -->
         <section id="pricing-tiers" class="py-24 px-6 max-w-7xl mx-auto relative z-10">
-            <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
-                <!-- Orbital Tier -->
-                <div class="md:col-span-4 glass-panel border border-[#48474d]/30 p-8 rounded-lg flex flex-col hover:border-[#8ff5ff]/40 transition-colors">
+            <div class="text-center mb-20">
+                <h2 class="text-4xl md:text-5xl font-bold tracking-tight mb-4">Pricing that Scales with You</h2>
+                <p class="text-on-surface-variant text-lg">Select the deck that fits your trading trajectory.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Starter Tier -->
+                <div class="surface-container-low p-8 rounded-full flex flex-col glass border border-white/5 price-card-glow relative overflow-hidden group">
+                    <div class="absolute -top-24 -right-24 w-48 h-48 bg-primary/5 rounded-full blur-3xl group-hover:bg-primary/10 transition-colors"></div>
                     <div class="mb-8">
-                        <span class="font-label text-xs text-[#acaab1] tracking-[0.2em] uppercase">Phase 01</span>
-                        <h3 class="font-headline text-3xl font-bold mt-2">Orbital</h3>
-                        <p class="text-[#acaab1] mt-2 font-body text-sm">Perfect for solitary starship captains.</p>
+                        <h3 class="text-on-surface-variant font-bold tracking-widest uppercase text-sm mb-2">Starter</h3>
+                        <div class="flex items-baseline gap-1">
+                            <span class="text-4xl font-bold">$0</span>
+                            <span class="text-on-surface-variant">/mo</span>
+                        </div>
                     </div>
-                    <div class="mb-8">
-                        <span class="text-4xl font-headline font-bold text-[#f8f5fd]">$29</span>
-                        <span class="text-[#acaab1] font-body">/cycle</span>
-                    </div>
-                    <ul class="space-y-4 mb-10 flex-grow font-body text-sm">
-                        <li class="flex items-center gap-3">
-                            <span class="material-symbols-outlined text-[#8ff5ff] text-lg">check_circle</span>
-                            Orbital Visualizations (Basic)
+                    <ul class="space-y-4 mb-10 flex-grow">
+                        <li class="flex items-center gap-3 text-on-surface">
+                            <span class="material-symbols-outlined text-primary text-sm" data-icon="check_circle">check_circle</span>
+                            Basic Orbital Visualizations
                         </li>
-                        <li class="flex items-center gap-3">
-                            <span class="material-symbols-outlined text-[#8ff5ff] text-lg">check_circle</span>
-                            Standard AI Signals
+                        <li class="flex items-center gap-3 text-on-surface">
+                            <span class="material-symbols-outlined text-primary text-sm" data-icon="check_circle">check_circle</span>
+                            5 Real-time Trading Signals
                         </li>
-                        <li class="flex items-center gap-3">
-                            <span class="material-symbols-outlined text-[#8ff5ff] text-lg">check_circle</span>
-                            5 Linked Wallets
+                        <li class="flex items-center gap-3 text-on-surface">
+                            <span class="material-symbols-outlined text-primary text-sm" data-icon="check_circle">check_circle</span>
+                            Standard Market Data Access
                         </li>
-                        <li class="flex items-center gap-3 text-[#acaab1]">
-                            <span class="material-symbols-outlined text-[#48474d] text-lg">block</span>
-                            Real-time Node Access
+                        <li class="flex items-center gap-3 text-on-surface">
+                            <span class="material-symbols-outlined text-primary text-sm" data-icon="check_circle">check_circle</span>
+                            Limited Historical Data (7 days)
+                        </li>
+                        <li class="flex items-center gap-3 text-on-surface">
+                            <span class="material-symbols-outlined text-primary text-sm" data-icon="check_circle">check_circle</span>
+                            Community Support Forum
+                        </li>
+                        <li class="flex items-center gap-3 text-on-surface">
+                            <span class="material-symbols-outlined text-primary text-sm" data-icon="check_circle">check_circle</span>
+                            Single Device Access
+                        </li>
+                        <li class="flex items-center gap-3 text-on-surface">
+                            <span class="material-symbols-outlined text-primary text-sm" data-icon="check_circle">check_circle</span>
+                            Basic Portfolio Tracking
+                        </li>
+                        <li class="flex items-center gap-3 text-on-surface-variant opacity-50">
+                            <span class="material-symbols-outlined text-sm" data-icon="block">block</span>
+                            AI Predictive Analysis
                         </li>
                     </ul>
-                    <button class="w-full py-4 border border-[#48474d] text-[#f8f5fd] font-label text-sm tracking-widest uppercase hover:bg-[#25252c] transition-colors">Initialize</button>
+                    <button class="w-full py-3 rounded-xl border border-outline-variant font-bold hover:bg-surface-container-highest transition-colors">Start Orbiting</button>
                 </div>
 
-                <!-- Stellar Tier (Featured) -->
-                <div class="md:col-span-4 relative bg-[#1f1f26]/40 backdrop-blur-2xl border-2 border-[#8ff5ff] p-8 rounded-lg flex flex-col shadow-[0_0_40px_rgba(143,245,255,0.1)]">
-                    <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#8ff5ff] px-4 py-1 rounded-sm">
-                        <span class="font-label text-xs font-bold text-[#003f43] tracking-widest uppercase">Popular Orbit</span>
-                    </div>
+                <!-- Pro Tier -->
+                <div class="surface-container-high p-8 rounded-full flex flex-col glass border-2 border-primary/40 price-card-glow relative overflow-hidden group scale-105 z-10 shadow-[0_0_50px_rgba(129,236,255,0.15)]">
+                    <div class="absolute -top-10 right-4 bg-primary text-on-primary-container px-3 py-1 rounded-full text-xs font-bold uppercase tracking-tighter">Recommended</div>
+                    <div class="absolute -bottom-24 -left-24 w-64 h-64 bg-primary/10 rounded-full blur-3xl"></div>
                     <div class="mb-8">
-                        <span class="font-label text-xs text-[#d674ff] tracking-[0.2em] uppercase">Phase 02</span>
-                        <h3 class="font-headline text-3xl font-bold mt-2">Stellar</h3>
-                        <p class="text-[#acaab1] mt-2 font-body text-sm">Advanced analytics for high-velocity traders.</p>
+                        <h3 class="text-primary font-bold tracking-widest uppercase text-sm mb-2">Pro</h3>
+                        <div class="flex items-baseline gap-1">
+                            <span class="text-4xl font-bold">$19</span>
+                            <span class="text-on-surface-variant">/mo</span>
+                        </div>
                     </div>
-                    <div class="mb-8">
-                        <span class="text-4xl font-headline font-bold text-[#f8f5fd]">$89</span>
-                        <span class="text-[#acaab1] font-body">/cycle</span>
-                    </div>
-                    <ul class="space-y-4 mb-10 flex-grow font-body text-sm">
-                        <li class="flex items-center gap-3">
-                            <span class="material-symbols-outlined text-[#8ff5ff] text-lg">bolt</span>
-                            Pro Orbital Visualizations
+                    <ul class="space-y-4 mb-10 flex-grow">
+                        <li class="flex items-center gap-3 text-on-surface font-medium">
+                            <span class="material-symbols-outlined text-primary text-sm" data-icon="check_circle">check_circle</span>
+                            Advanced Orbital Visualizations
                         </li>
-                        <li class="flex items-center gap-3">
-                            <span class="material-symbols-outlined text-[#8ff5ff] text-lg">bolt</span>
-                            Neural Signal Suite
+                        <li class="flex items-center gap-3 text-on-surface font-medium">
+                            <span class="material-symbols-outlined text-primary text-sm" data-icon="check_circle">check_circle</span>
+                            Unlimited AI Trading Signals
                         </li>
-                        <li class="flex items-center gap-3">
-                            <span class="material-symbols-outlined text-[#8ff5ff] text-lg">bolt</span>
-                            Unlimited Wallet Linking
+                        <li class="flex items-center gap-3 text-on-surface font-medium">
+                            <span class="material-symbols-outlined text-primary text-sm" data-icon="check_circle">check_circle</span>
+                            Priority Market Data Access
                         </li>
-                        <li class="flex items-center gap-3">
-                            <span class="material-symbols-outlined text-[#8ff5ff] text-lg">bolt</span>
-                            Priority Node Access
+                        <li class="flex items-center gap-3 text-on-surface font-medium">
+                            <span class="material-symbols-outlined text-primary text-sm" data-icon="check_circle">check_circle</span>
+                            AI Predictive Analysis
+                        </li>
+                        <li class="flex items-center gap-3 text-on-surface font-medium">
+                            <span class="material-symbols-outlined text-primary text-sm" data-icon="check_circle">check_circle</span>
+                            Full Historical Data Access
+                        </li>
+                        <li class="flex items-center gap-3 text-on-surface font-medium">
+                            <span class="material-symbols-outlined text-primary text-sm" data-icon="check_circle">check_circle</span>
+                            Dedicated Chat Support
+                        </li>
+                        <li class="flex items-center gap-3 text-on-surface font-medium">
+                            <span class="material-symbols-outlined text-primary text-sm" data-icon="check_circle">check_circle</span>
+                            Multi-Device Sync
+                        </li>
+                        <li class="flex items-center gap-3 text-on-surface font-medium">
+                            <span class="material-symbols-outlined text-primary text-sm" data-icon="check_circle">check_circle</span>
+                            Advanced Portfolio Analytics
                         </li>
                     </ul>
-                    <button class="w-full py-4 bg-[#8ff5ff] text-[#003f43] font-label font-bold text-sm tracking-widest uppercase shadow-[0_0_15px_rgba(0,238,252,0.3)] hover:scale-[1.02] transition-transform">Accelerate</button>
+                    <button class="w-full py-4 rounded-xl bg-gradient-to-br from-primary to-primary-container text-on-primary-container font-extrabold shadow-[0_0_20px_rgba(129,236,255,0.4)]">Go Supernova</button>
                 </div>
 
-                <!-- Galactic Tier -->
-                <div class="md:col-span-4 glass-panel border border-[#48474d]/30 p-8 rounded-lg flex flex-col hover:border-[#d674ff]/40 transition-colors">
+                <!-- Enterprise Tier -->
+                <div class="surface-container-low p-8 rounded-full flex flex-col glass border border-white/5 price-card-glow relative overflow-hidden group">
+                    <div class="absolute -top-24 -right-24 w-48 h-48 bg-secondary/5 rounded-full blur-3xl group-hover:bg-secondary/10 transition-colors"></div>
                     <div class="mb-8">
-                        <span class="font-label text-xs text-[#acaab1] tracking-[0.2em] uppercase">Phase 03</span>
-                        <h3 class="font-headline text-3xl font-bold mt-2">Galactic</h3>
-                        <p class="text-[#acaab1] mt-2 font-body text-sm">Institutional power. Total dominance.</p>
+                        <h3 class="text-on-surface-variant font-bold tracking-widest uppercase text-sm mb-2">Enterprise</h3>
+                        <div class="flex items-baseline gap-1">
+                            <span class="text-4xl font-bold">$29</span>
+                            <span class="text-on-surface-variant">/mo</span>
+                        </div>
                     </div>
-                    <div class="mb-8">
-                        <span class="text-4xl font-headline font-bold text-[#f8f5fd]">$249</span>
-                        <span class="text-[#acaab1] font-body">/cycle</span>
-                    </div>
-                    <ul class="space-y-4 mb-10 flex-grow font-body text-sm">
-                        <li class="flex items-center gap-3">
-                            <span class="material-symbols-outlined text-[#d674ff] text-lg">auto_awesome</span>
-                            Real-time Raw Node Access
+                    <ul class="space-y-4 mb-10 flex-grow">
+                        <li class="flex items-center gap-3 text-on-surface">
+                            <span class="material-symbols-outlined text-secondary text-sm" data-icon="check_circle">check_circle</span>
+                            Multi-User Team Accounts
                         </li>
-                        <li class="flex items-center gap-3">
-                            <span class="material-symbols-outlined text-[#d674ff] text-lg">auto_awesome</span>
-                            Custom Signal Integration
+                        <li class="flex items-center gap-3 text-on-surface">
+                            <span class="material-symbols-outlined text-secondary text-sm" data-icon="check_circle">check_circle</span>
+                            Custom Signal API Integration
                         </li>
-                        <li class="flex items-center gap-3">
-                            <span class="material-symbols-outlined text-[#d674ff] text-lg">auto_awesome</span>
-                            24/7 Quantum Concierge
+                        <li class="flex items-center gap-3 text-on-surface">
+                            <span class="material-symbols-outlined text-secondary text-sm" data-icon="check_circle">check_circle</span>
+                            Dedicated Account Manager
                         </li>
-                        <li class="flex items-center gap-3">
-                            <span class="material-symbols-outlined text-[#d674ff] text-lg">auto_awesome</span>
-                            Private Liquidity Pools
+                        <li class="flex items-center gap-3 text-on-surface">
+                            <span class="material-symbols-outlined text-secondary text-sm" data-icon="check_circle">check_circle</span>
+                            Whitelabel Dashboard Options
+                        </li>
+                        <li class="flex items-center gap-3 text-on-surface">
+                            <span class="material-symbols-outlined text-secondary text-sm" data-icon="check_circle">check_circle</span>
+                            Algorithmic Trading Bots
+                        </li>
+                        <li class="flex items-center gap-3 text-on-surface">
+                            <span class="material-symbols-outlined text-secondary text-sm" data-icon="check_circle">check_circle</span>
+                            On-Premise Deployment Options
+                        </li>
+                        <li class="flex items-center gap-3 text-on-surface">
+                            <span class="material-symbols-outlined text-secondary text-sm" data-icon="check_circle">check_circle</span>
+                            Advanced Security Audits
+                        </li>
+                        <li class="flex items-center gap-3 text-on-surface">
+                            <span class="material-symbols-outlined text-secondary text-sm" data-icon="check_circle">check_circle</span>
+                            SLA-backed Uptime Guarantee
                         </li>
                     </ul>
-                    <button class="w-full py-4 border border-[#d674ff]/50 text-[#d674ff] font-label text-sm tracking-widest uppercase hover:bg-[#d674ff]/10 transition-colors">Establish Command</button>
+                    <button class="w-full py-3 rounded-xl border border-outline-variant font-bold hover:bg-surface-container-highest transition-colors">Deploy Fleet</button>
                 </div>
             </div>
         </section>
 
         <!-- FAQ Section -->
-        <section id="faq" class="py-24 bg-[#131318]/30 relative z-10">
-            <div class="max-w-4xl mx-auto px-6">
-                <div class="text-center mb-16">
-                    <h2 class="font-headline text-4xl font-bold mb-4">Transmission Clarification</h2>
-                    <p class="text-[#acaab1] font-body">Frequent inquiries regarding the Dalim protocol.</p>
+        <section id="faq" class="py-24 px-6 max-w-4xl mx-auto relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-4">Frequently Asked Questions</h2>
+                <p class="text-on-surface-variant">Technical details for the curious navigator.</p>
+            </div>
+            <div class="space-y-4">
+                <div class="surface-container rounded-xl p-6 border border-outline-variant/20">
+                    <button class="w-full flex justify-between items-center text-left">
+                        <span class="font-bold text-lg">How secure are the Dalim nodes?</span>
+                        <span class="material-symbols-outlined text-primary" data-icon="expand_more">expand_more</span>
+                    </button>
+                    <div class="mt-4 text-on-surface-variant font-light leading-relaxed">
+                        Our nodes are distributed across global quantum-resistant server clusters. Each transaction is verified through a proprietary multi-layer encryption protocol we call 'Astral Guard'.
+                    </div>
                 </div>
-                <div class="space-y-4">
-                    <div class="glass-panel border-b border-[#48474d]/20 p-6">
-                        <button class="w-full flex justify-between items-center text-left" aria-expanded="false" aria-controls="faq-answer-1">
-                            <span class="font-headline text-lg font-medium">How secure is the Dalim Vault?</span>
-                            <span class="material-symbols-outlined">expand_more</span>
-                        </button>
-                        <div id="faq-answer-1" class="mt-4 text-[#acaab1] font-body leading-relaxed hidden">
-                            Every asset in the Dalim Vault is protected by triple-layered neural encryption and cold-storage sharding. We utilize a proprietary decentralized custody protocol that ensures even our developers cannot access your private keys.
-                        </div>
+                <div class="surface-container rounded-xl p-6 border border-outline-variant/20">
+                    <button class="w-full flex justify-between items-center text-left">
+                        <span class="font-bold text-lg">What exactly are trading signals?</span>
+                        <span class="material-symbols-outlined text-primary" data-icon="expand_more">expand_more</span>
+                    </button>
+                    <div class="mt-4 text-on-surface-variant font-light leading-relaxed">
+                        Trading signals are AI-driven insights generated by monitoring over 400 market variables simultaneously. They provide entry and exit points based on celestial momentum and volume fluctuations.
                     </div>
-                    <div class="glass-panel border-b border-[#48474d]/20 p-6">
-                        <button class="w-full flex justify-between items-center text-left" aria-expanded="false" aria-controls="faq-answer-2">
-                            <span class="font-headline text-lg font-medium">What is "Real-time Node Access"?</span>
-                            <span class="material-symbols-outlined">expand_more</span>
-                        </button>
-                        <div id="faq-answer-2" class="mt-4 text-[#acaab1] font-body leading-relaxed hidden">
-                            Standard traders wait for block confirmation alerts. Galactic members connect directly to our private low-latency validator nodes, gaining sub-millisecond execution advantages during high-volatility events.
-                        </div>
+                </div>
+                <div class="surface-container rounded-xl p-6 border border-outline-variant/20">
+                    <button class="w-full flex justify-between items-center text-left">
+                        <span class="font-bold text-lg">Can I cancel my subscription at any time?</span>
+                        <span class="material-symbols-outlined text-primary" data-icon="expand_more">expand_more</span>
+                    </button>
+                    <div class="mt-4 text-on-surface-variant font-light leading-relaxed">
+                        Yes. Subscriptions are billed on a lunar cycle. You can transition back to the 'Orbit' (Free) tier at any time without data loss.
                     </div>
-                    <div class="glass-panel border-b border-[#48474d]/20 p-6">
-                        <button class="w-full flex justify-between items-center text-left" aria-expanded="false" aria-controls="faq-answer-3">
-                            <span class="font-headline text-lg font-medium">Can I switch orbits during a cycle?</span>
-                            <span class="material-symbols-outlined">expand_more</span>
-                        </button>
-                        <div id="faq-answer-3" class="mt-4 text-[#acaab1] font-body leading-relaxed hidden">
-                            Yes. Scaling up is instantaneous. Scaling down will take effect at the start of your next lunar cycle to ensure protocol integrity during active signals.
-                        </div>
-                    </div>
-                    <div class="glass-panel border-b border-[#48474d]/20 p-6">
-                        <button class="w-full flex justify-between items-center text-left" aria-expanded="false" aria-controls="faq-answer-4">
-                            <span class="font-headline text-lg font-medium">What is a "Quantum Concierge"?</span>
-                            <span class="material-symbols-outlined">expand_more</span>
-                        </button>
-                        <div id="faq-answer-4" class="mt-4 text-[#acaab1] font-body leading-relaxed hidden">
-                            Our Quantum Concierge service provides dedicated, personalized support from a team of expert traders and protocol engineers. They offer strategic guidance, custom automation setup, and immediate assistance for any complex trading scenarios.
-                        </div>
-                    </div>
-                    <div class="glass-panel border-b border-[#48474d]/20 p-6">
-                        <button class="w-full flex justify-between items-center text-left" aria-expanded="false" aria-controls="faq-answer-5">
-                            <span class="font-headline text-lg font-medium">Is there a free trial available?</span>
-                            <span class="material-symbols-outlined">expand_more</span>
-                        </button>
-                        <div id="faq-answer-5" class="mt-4 text-[#acaab1] font-body leading-relaxed hidden">
-                            While Dalim Protocol does not offer a traditional free trial, we provide a comprehensive demo environment where you can explore all features with simulated data. Contact our support team for access.
-                        </div>
+                </div>
+                <div class="surface-container rounded-xl p-6 border border-outline-variant/20">
+                    <button class="w-full flex justify-between items-center text-left">
+                        <span class="font-bold text-lg">Do you support hardware wallet integration?</span>
+                        <span class="material-symbols-outlined text-primary" data-icon="expand_more">expand_more</span>
+                    </button>
+                    <div class="mt-4 text-on-surface-variant font-light leading-relaxed">
+                        Dalim supports all major cold-storage hardware wallets. Your keys never leave your device; our dashboard simply acts as the lens through which you interact with your assets.
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- CTA Section -->
-        <section id="cta" class="py-32 relative overflow-hidden z-10">
-            <div class="absolute inset-0 z-0">
-                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#d674ff]/10 rounded-full blur-[120px]"></div>
-                <div class="absolute top-1/2 right-1/4 w-[300px] h-[300px] bg-[#8ff5ff]/10 rounded-full blur-[100px]"></div>
-            </div>
-            <div class="relative z-10 max-w-4xl mx-auto px-6 text-center">
-                <h2 class="font-headline text-5xl md:text-6xl font-bold mb-8 tracking-tight">Secure Your Position in the Void</h2>
-                <p class="text-xl text-[#acaab1] font-body mb-12 max-w-2xl mx-auto">
-                    The next market shift is approaching. Don't just witness it—control it with Dalim Protocol's neural trading stack.
+        <section id="cta" class="py-24 px-6 relative z-10">
+            <div class="max-w-5xl mx-auto rounded-full p-12 md:p-20 relative overflow-hidden nebula-glow border border-primary/20 bg-gradient-to-br from-surface-container-high to-surface-dim text-center">
+                <div class="absolute top-0 right-0 w-96 h-96 bg-primary/10 rounded-full blur-[120px]"></div>
+                <div class="absolute bottom-0 left-0 w-96 h-96 bg-secondary/10 rounded-full blur-[120px]"></div>
+                <h2 class="text-4xl md:text-6xl font-extrabold tracking-tighter mb-8">Ready to Join the Nebula?</h2>
+                <p class="text-xl text-on-surface-variant mb-12 max-w-2xl mx-auto">
+                    Thousands of traders are already charting their path through the digital cosmos. Your seat in the cockpit is waiting.
                 </p>
-                <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
-                    <button class="bg-[#8ff5ff] text-[#003f43] px-12 py-5 font-label font-bold text-lg tracking-widest uppercase rounded-sm shadow-[0_0_30px_rgba(143,245,255,0.2)] hover:scale-105 transition-all">
-                        BEGIN YOUR ASCENT
-                    </button>
-                    <a class="font-label text-sm tracking-widest uppercase text-[#f8f5fd] hover:text-[#8ff5ff] transition-colors flex items-center gap-2" href="#">
-                        READ WHITE PAPER
-                        <span class="material-symbols-outlined text-sm">arrow_forward</span>
-                    </a>
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
+                    <a class="bg-primary text-on-primary-container px-12 py-5 rounded-xl font-bold text-lg shadow-[0_0_25px_rgba(129,236,255,0.4)]" href="#">Get Started</a>
+                    <a class="text-on-surface font-bold hover:text-primary transition-colors" href="#">Learn More →</a>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer class="bg-[#0e0e13] w-full py-12 border-t border-[#8ff5ff]/10 relative z-10">
-        <div class="max-w-7xl mx-auto px-8 flex flex-col md:flex-row justify-between items-center gap-6">
-            <div class="flex flex-col items-center md:items-start gap-2">
-                <span class="font-headline font-bold text-[#8ff5ff] text-xl">DALIM PROTOCOL</span>
-                <p class="font-body text-sm tracking-tight text-[#f8f5fd]/40 uppercase">© 2024 DALIM PROTOCOL. NEURAL TRADING INFRASTRUCTURE.</p>
+    <!-- Footer -->
+    <footer class="bg-[#0e0e13] full-width py-12 border-t border-[#1f1f26] flat relative z-10">
+        <div class="w-full flex flex-col md:flex-row justify-between items-center px-12 gap-6">
+            <div class="flex items-center gap-2">
+                <span class="text-[#81ecff] font-bold text-xl font-['Space_Grotesk']">DALIM</span>
+                <span class="text-[#acaab1] text-xs font-['Space_Grotesk'] tracking-[0.2em] ml-4">© 2024 DALIM ASTRAL SYSTEMS</span>
             </div>
-            <div class="flex gap-8">
-                <a class="text-[#f8f5fd]/40 hover:text-[#ff7346] transition-colors font-body text-sm" href="index.html">Terminal</a>
-                <a class="text-[#f8f5fd]/40 hover:text-[#ff7346] transition-colors font-body text-sm" href="dashboard.html">Orbits</a>
-                <a class="text-[#f8f5fd]/40 hover:text-[#ff7346] transition-colors font-body text-sm" href="features.html">Signals</a>
-                <a class="text-[#f8f5fd]/40 hover:text-[#ff7346] transition-colors font-body text-sm" href="pricing.html">Pricing</a>
+            <div class="flex gap-8 font-['Space_Grotesk'] text-xs font-light tracking-[0.2em]">
+                <a class="text-[#acaab1] hover:text-[#81ecff] transition-colors" href="#">Terminal</a>
+                <a class="text-[#acaab1] hover:text-[#81ecff] transition-colors" href="#">Docs</a>
+                <a class="text-[#acaab1] hover:text-[#81ecff] transition-colors" href="#">Security</a>
+                <a class="text-[#acaab1] hover:text-[#81ecff] transition-colors" href="#">Nodes</a>
             </div>
             <div class="flex gap-4">
-                <span class="material-symbols-outlined text-[#8ff5ff]/50 hover:text-[#8ff5ff] cursor-pointer">public</span>
-                <span class="material-symbols-outlined text-[#8ff5ff]/50 hover:text-[#8ff5ff] cursor-pointer">deployed_code</span>
-                <span class="material-symbols-outlined text-[#8ff5ff]/50 hover:text-[#8ff5ff] cursor-pointer">hub</span>
+                <a class="text-[#acaab1] hover:text-[#81ecff]" href="#"><span class="material-symbols-outlined">public</span></a>
+                <a class="text-[#acaab1] hover:text-[#81ecff]" href="#"><span class="material-symbols-outlined">shield_with_heart</span></a>
             </div>
         </div>
     </footer>
 
-    <script src="shared.js"></script>
-    <script>
-        // Simple accordion functionality for FAQ section
-        document.addEventListener('DOMContentLoaded', () => {
-            const faqButtons = document.querySelectorAll('#faq button');
-            faqButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    const answer = button.nextElementSibling;
-                    const isExpanded = button.getAttribute('aria-expanded') === 'true';
+    <!-- BottomNavBar (Mobile Only) -->
+    <nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-6 pt-3 bg-[#0e0e13]/80 backdrop-blur-2xl z-50 rounded-t-3xl tonal-transition bg-gradient-to-t from-[#131319] to-transparent shadow-[0_-10px_40px_rgba(166,140,255,0.1)]">
+        <div class="flex flex-col items-center justify-center text-[#acaab1] opacity-60 tap-highlight-transparent">
+            <span class="material-symbols-outlined" data-icon="explore">explore</span>
+            <span class="font-['Space_Grotesk'] text-[10px] uppercase tracking-widest mt-1">Orbit</span>
+        </div>
+        <div class="flex flex-col items-center justify-center text-[#acaab1] opacity-60 tap-highlight-transparent">
+            <span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+            <span class="font-['Space_Grotesk'] text-[10px] uppercase tracking-widest mt-1">Market</span>
+        </div>
+        <div class="flex flex-col items-center justify-center text-[#acaab1] opacity-60 tap-highlight-transparent">
+            <span class="material-symbols-outlined" data-icon="swap_vert">swap_vert</span>
+            <span class="font-['Space_Grotesk'] text-[10px] uppercase tracking-widest mt-1">Trade</span>
+        </div>
+        <!-- Active Tab: Pricing / Signals (Signals selected as closest match) -->
+        <div class="flex flex-col items-center justify-center text-[#81ecff] bg-[#1f1f26] rounded-xl px-4 py-1 shadow-[0_0_15px_rgba(129,236,255,0.2)] tap-highlight-transparent">
+            <span class="material-symbols-outlined" data-icon="insights">insights</span>
+            <span class="font-['Space_Grotesk'] text-[10px] uppercase tracking-widest mt-1">Signals</span>
+        </div>
+        <div class="flex flex-col items-center justify-center text-[#acaab1] opacity-60 tap-highlight-transparent">
+            <span class="material-symbols-outlined" data-icon="account_balance_wallet">account_balance_wallet</span>
+            <span class="font-['Space_Grotesk'] text-[10px] uppercase tracking-widest mt-1">Assets</span>
+        </div>
+    </nav>
 
-                    button.setAttribute('aria-expanded', !isExpanded);
-                    if (isExpanded) {
-                        answer.classList.add('hidden');
-                        button.querySelector('.material-symbols-outlined').textContent = 'expand_more';
-                    } else {
-                        answer.classList.remove('hidden');
-                        button.querySelector('.material-symbols-outlined').textContent = 'expand_less';
-                    }
-                });
-            });
-        });
-    </script>
+    <script src="shared.js"></script>
     <script src="animations.js"></script>
 </body>
 </html>

@@ -1,0 +1,14 @@
+User-agent: *
+Allow: /
+
+# AI Bots
+User-agent: GPTBot
+Allow: /
+User-agent: ClaudeBot
+Allow: /
+User-agent: PerplexityBot
+Allow: /
+User-agent: GoogleOther
+Allow: /
+
+Sitemap: https://thecryptomethod.github.io/galactic-trading-platform/sitemap.xml

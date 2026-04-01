@@ -2,236 +2,196 @@
 (function() {
     try {
         (function() {
-    const dpr = window.devicePixelRatio || 1;
-    const raf = window.requestAnimationFrame;
-    const doc = document;
-    const body = doc.body;
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    // --- Design Tokens (assumed CSS custom properties) ---
-    const getColor = (prop) => getComputedStyle(doc.documentElement).getPropertyValue(prop) || '#fff';
-    const primaryColor = () => getColor('--color-primary') || '#00f0ff';
-    const accentColor = () => getColor('--color-accent') || '#ff00ff';
+    // Design Tokens (hardcoded fallbacks for brevity)
+    const C = {
+        P: '#00F0FF', // Accent Primary
+        S: '#FF00C1', // Accent Secondary
+        BG: '#02040A' // Background Primary
+    };
 
-    // --- Utility Functions ---
-    const clamp = (num, min, max) => Math.min(Math.max(num, min), max);
-    const easeOutExpo = (t) => t === 1 ? 1 : 1 - Math.pow(2, -10 * t);
-
-    // --- Canvas Background Animation ---
-    const canvas = doc.createElement('canvas');
+    // --- CANVAS ---
+    const canvas = document.createElement('canvas');
     const ctx = canvas.getContext('2d');
-    let particles = [];
-    let mouse = { x: -999, y: -999, radius: 200 };
-    let canvasWidth, canvasHeight;
+    let nodes = [];
+    let mouse = { x: 0, y: 0, r: 200 }; // r for radius
+    let animFrameId;
 
     function setupCanvas() {
+        document.body.appendChild(canvas);
         canvas.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;';
-        body.appendChild(canvas);
         resizeCanvas();
-        window.addEventListener('resize', resizeCanvas, { passive: true });
-        doc.addEventListener('mousemove', (e) => { mouse.x = e.clientX; mouse.y = e.clientY; }, { passive: true });
-        doc.addEventListener('mouseleave', () => { mouse.x = -999; mouse.y = -999; }, { passive: true });
+        window.addEventListener('resize', resizeCanvas);
+        document.addEventListener('mousemove', e => { mouse.x = e.clientX; mouse.y = e.clientY; });
+        initNodes();
+        if (!prefersReducedMotion) animateCanvas();
     }
 
     function resizeCanvas() {
-        canvasWidth = window.innerWidth;
-        canvasHeight = window.innerHeight;
-        canvas.width = canvasWidth * dpr;
-        canvas.height = canvasHeight * dpr;
+        const dpr = window.devicePixelRatio || 1;
+        canvas.width = window.innerWidth * dpr;
+        canvas.height = window.innerHeight * dpr;
         ctx.scale(dpr, dpr);
     }
 
-    // Themed shapes: Data Node, Orbital Ring, AI Chip
-    function drawDataNode(ctx, size) { ctx.beginPath(); ctx.moveTo(0, -size); ctx.lineTo(size * 0.866, size * 0.5); ctx.lineTo(0, size); ctx.lineTo(-size * 0.866, size * 0.5); ctx.closePath(); }
-    function drawOrbitalRing(ctx, size) { ctx.beginPath(); ctx.arc(0, 0, size, 0, Math.PI * 2); ctx.lineWidth = 1; ctx.stroke(); ctx.beginPath(); ctx.arc(0, 0, size * 0.6, 0, Math.PI * 2); ctx.lineWidth = 0.5; ctx.stroke(); }
-    function drawAIChip(ctx, size) { ctx.beginPath(); ctx.rect(-size * 0.7, -size * 0.7, size * 1.4, size * 1.4); ctx.moveTo(-size * 0.5, -size * 0.7); ctx.lineTo(-size * 0.5, -size); ctx.moveTo(size * 0.5, -size * 0.7); ctx.lineTo(size * 0.5, -size); ctx.moveTo(-size * 0.7, size * 0.5); ctx.lineTo(-size, size * 0.5); ctx.moveTo(size * 0.7, size * 0.5); ctx.lineTo(size, size * 0.5); ctx.stroke(); }
-
-    class Particle {
-        constructor(id) { this.id = id; this.reset(); this.shapeType = Math.floor(Math.random() * 3); }
-        reset() {
-            this.x = Math.random() * canvasWidth; this.y = Math.random() * canvasHeight;
-            this.z = Math.random() * 0.8 + 0.2; this.baseSize = Math.random() * 15 + 10;
-            this.size = this.baseSize * this.z; this.vx = (Math.random() - 0.5) * 0.5 * this.z;
-            this.vy = (Math.random() - 0.5) * 0.5 * this.z; this.rotation = Math.random() * Math.PI * 2;
-            this.vr = (Math.random() - 0.5) * 0.005 * this.z; this.alpha = this.z * 0.3 + 0.2;
-            this.color = this.id % 2 === 0 ? primaryColor() : accentColor();
-        }
-        update() {
-            this.x += this.vx; this.y += this.vy; this.rotation += this.vr;
-            if (this.x < -this.size || this.x > canvasWidth + this.size || this.y < -this.size || this.y > canvasHeight + this.size) {
-                this.reset();
-                if (this.x < -this.size) this.x = canvasWidth + this.size; else if (this.x > canvasWidth + this.size) this.x = -this.size;
-                if (this.y < -this.size) this.y = canvasHeight + this.size; else if (this.y > canvasHeight + this.size) this.y = -this.size;
-            }
-            const dx = mouse.x - this.x, dy = mouse.y - this.y, dist = Math.sqrt(dx * dx + dy * dy);
-            if (dist < mouse.radius) { const force = (mouse.radius - dist) / mouse.radius; this.vx -= dx * force * 0.005; this.vy -= dy * force * 0.005; }
+    class Node {
+        constructor(type) {
+            this.x = Math.random() * window.innerWidth; this.y = Math.random() * window.innerHeight;
+            this.z = Math.random(); // Depth
+            this.r = 5 + this.z * 10; // Radius
+            this.type = type;
+            this.c = this.z > 0.5 ? C.P : C.S; // Color
+            this.a = 0.2 + this.z * 0.6; // Alpha
+            this.vx = (Math.random() - 0.5) * (0.2 + this.z * 0.3);
+            this.vy = (Math.random() - 0.5) * (0.2 + this.z * 0.3);
+            this.rot = Math.random() * Math.PI * 2;
+            this.rotS = (Math.random() - 0.5) * 0.005;
         }
         draw() {
-            ctx.save(); ctx.translate(this.x, this.y); ctx.rotate(this.rotation);
-            ctx.globalAlpha = this.alpha; ctx.strokeStyle = this.color; ctx.fillStyle = this.color;
-            if (this.shapeType === 0) drawDataNode(ctx, this.size); else if (this.shapeType === 1) drawOrbitalRing(ctx, this.size); else drawAIChip(ctx, this.size);
-            ctx.stroke(); ctx.restore();
+            ctx.save(); ctx.translate(this.x, this.y); ctx.rotate(this.rot);
+            ctx.globalAlpha = this.a; ctx.strokeStyle = this.c; ctx.lineWidth = 1 + this.z;
+            ctx.beginPath();
+            if (this.type === 'h') for (let i = 0; i < 6; i++) ctx.lineTo(this.r * Math.cos(Math.PI / 3 * i), this.r * Math.sin(Math.PI / 3 * i));
+            else if (this.type === 'd') { ctx.moveTo(-this.r, 0); ctx.lineTo(this.r, 0); ctx.moveTo(-this.r * 0.8, -this.r * 0.5); ctx.lineTo(this.r * 0.8, this.r * 0.5); }
+            else if (this.type === 'r') ctx.arc(0, 0, this.r, 0, Math.PI * 1.5);
+            ctx.closePath(); ctx.stroke(); ctx.restore();
+        }
+        update() {
+            this.x += this.vx; this.y += this.vy; this.rot += this.rotS;
+            if (this.x < 0 || this.x > window.innerWidth) this.vx *= -1;
+            if (this.y < 0 || this.y > window.innerHeight) this.vy *= -1;
+            const dx = mouse.x - this.x, dy = mouse.y - this.y, dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < mouse.r) { const f = (mouse.r - dist) / mouse.r; this.vx -= (dx / dist) * f * 0.05; this.vy -= (dy / dist) * f * 0.05; }
         }
     }
 
-    function initParticles() { particles = []; for (let i = 0; i < 15; i++) particles.push(new Particle(i)); }
-    function connectParticles() {
-        for (let i = 0; i < particles.length; i++) {
-            for (let j = i + 1; j < particles.length; j++) {
-                const p1 = particles[i], p2 = particles[j];
-                const dx = p1.x - p2.x, dy = p1.y - p2.y, dist = Math.sqrt(dx * dx + dy * dy);
-                if (dist < 120) {
-                    ctx.beginPath(); ctx.moveTo(p1.x, p1.y); ctx.lineTo(p2.x, p2.y);
-                    const gradient = ctx.createLinearGradient(p1.x, p1.y, p2.x, p2.y);
-                    gradient.addColorStop(0, p1.color); gradient.addColorStop(1, p2.color);
-                    ctx.strokeStyle = gradient; ctx.globalAlpha = (1 - (dist / 120)) * 0.15; ctx.lineWidth = 0.5; ctx.stroke();
-                }
-            }
-        }
+    function initNodes() {
+        nodes = [];
+        const types = ['h', 'd', 'r']; // hexagon, dataLine, ring
+        for (let i = 0; i < (prefersReducedMotion ? 4 : 15); i++) nodes.push(new Node(types[Math.floor(Math.random() * types.length)]));
     }
-
-    let scrollY = 0, lastScrollY = 0, scrollDirection = 0;
 
     function animateCanvas() {
-        raf(animateCanvas); ctx.clearRect(0, 0, canvas.width, canvas.height);
-        const scrollFactor = clamp(scrollY / (doc.documentElement.scrollHeight - window.innerHeight), 0, 1);
-        particles.forEach(p => {
-            p.vx += scrollDirection * 0.005 * p.z; p.vy += scrollDirection * 0.005 * p.z;
-            p.alpha = p.z * 0.3 + 0.2 + scrollFactor * 0.2; p.update(); p.draw();
-        });
-        connectParticles();
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        nodes.forEach(n => { n.update(); n.draw(); });
+        for (let i = 0; i < nodes.length; i++) {
+            for (let j = i + 1; j < nodes.length; j++) {
+                const n1 = nodes[i], n2 = nodes[j], dx = n1.x - n2.x, dy = n1.y - n2.y, dist = Math.sqrt(dx * dx + dy * dy);
+                if (dist < 150) { ctx.beginPath(); ctx.moveTo(n1.x, n1.y); ctx.lineTo(n2.x, n2.y); ctx.strokeStyle = `rgba(255,255,255,${0.1 * (1 - dist / 150)})`; ctx.lineWidth = 0.5; ctx.stroke(); }
+            }
+        }
+        animFrameId = requestAnimationFrame(animateCanvas);
     }
 
-    // --- Scroll-Driven Effects ---
-    const parallaxBgs = doc.querySelectorAll('[data-parallax-bg]');
-    const countUpElements = doc.querySelectorAll('[data-count-up]');
-    const scrollProgress = doc.querySelector('[data-scroll-progress]');
+    // --- SCROLL EFFECTS ---
+    const progressBar = document.createElement('div');
+    progressBar.style.cssText = `position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,${C.P},${C.S});z-index:9999;width:0%;transition:width 0.1s linear;`;
+    document.body.appendChild(progressBar);
 
     function handleScroll() {
-        scrollY = window.scrollY; scrollDirection = scrollY > lastScrollY ? 1 : -1; lastScrollY = scrollY;
-        parallaxBgs.forEach(el => { const speed = parseFloat(el.dataset.parallaxBg) || 0.1; el.style.transform = `translateY(${scrollY * speed}px)`; });
-        if (scrollProgress) {
-            const scrollPercent = scrollY / (doc.documentElement.scrollHeight - window.innerHeight);
-            scrollProgress.style.width = `${scrollPercent * 100}%`;
-            scrollProgress.style.boxShadow = `0 0 10px 2px ${primaryColor()}, 0 0 20px 5px ${accentColor()}`;
-        }
+        const p = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+        progressBar.style.width = `${p}%`;
+        if (!prefersReducedMotion) nodes.forEach(n => { n.vx *= (1 + p * 0.0001); n.vy *= (1 + p * 0.0001); n.a = 0.2 + n.z * 0.6 + p * 0.001; });
     }
-
-    const countUpObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const el = entry.target, target = parseInt(el.dataset.countUp, 10), duration = parseInt(el.dataset.duration, 10) || 2000;
-                let start = null;
-                const animateCount = (timestamp) => {
-                    if (!start) start = timestamp; const progress = (timestamp - start) / duration;
-                    const easedProgress = easeOutExpo(clamp(progress, 0, 1));
-                    el.textContent = Math.floor(easedProgress * target).toLocaleString();
-                    if (progress < 1) raf(animateCount);
-                };
-                raf(animateCount); observer.unobserve(el);
-            }
-        });
-    }, { threshold: 0.5 });
-    countUpElements.forEach(el => countUpObserver.observe(el));
     window.addEventListener('scroll', handleScroll, { passive: true });
 
-    // --- Visibility API ---
-    let lastHiddenTime = 0, awayTimer = null;
-    doc.addEventListener('visibilitychange', () => {
-        if (doc.hidden) {
-            lastHiddenTime = Date.now();
-            awayTimer = setTimeout(() => {
-                const shimmerEl = doc.createElement('div');
-                shimmerEl.style.cssText = `position:fixed;top:0;left:0;width:100%;height:100%;z-index:9999;background:radial-gradient(circle at 50% 50%, ${primaryColor()}33 0%, transparent 70%);opacity:0;pointer-events:none;transition:opacity 0.5s ease-out;`;
-                body.appendChild(shimmerEl);
-                setTimeout(() => { shimmerEl.style.opacity = 1; }, 10);
-                setTimeout(() => { shimmerEl.style.opacity = 0; }, 1000);
-                setTimeout(() => { shimmerEl.remove(); }, 1500);
-            }, 30000);
-        } else {
-            clearTimeout(awayTimer);
-            if (Date.now() - lastHiddenTime > 3000) {
-                particles.forEach(p => { p.vx = (Math.random() - 0.5) * 10; p.vy = (Math.random() - 0.5) * 10; });
-                setTimeout(() => particles.forEach(p => p.reset()), 1000);
-                doc.querySelectorAll('.animate-on-scroll').forEach(el => {
-                    el.style.opacity = 0; el.style.transform = 'translateY(20px)';
-                    setTimeout(() => { el.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out'; el.style.opacity = 1; el.style.transform = 'translateY(0)'; }, Math.random() * 300);
-                });
-                if (scrollProgress) {
-                    scrollProgress.style.transition = 'box-shadow 0.3s ease-in-out';
-                    scrollProgress.style.boxShadow = `0 0 20px 5px ${primaryColor()}, 0 0 40px 10px ${accentColor()}`;
-                    setTimeout(() => { scrollProgress.style.boxShadow = `0 0 10px 2px ${primaryColor()}, 0 0 20px 5px ${accentColor()}`; }, 300);
-                }
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+            if (e.isIntersecting) {
+                if (e.target.dataset.animateOnScroll && !prefersReducedMotion) e.target.classList.add('is-visible');
+                if (e.target.dataset.countUp) { startCountUp(e.target); observer.unobserve(e.target); }
             }
+        });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('[data-animate-on-scroll], [data-count-up]').forEach(el => observer.observe(el));
+
+    function startCountUp(el) {
+        if (prefersReducedMotion) { el.textContent = el.dataset.countUp; return; }
+        const target = parseInt(el.dataset.countUp, 10); let current = 0; const dur = 2000; const start = performance.now();
+        function anim(ts) {
+            const elapsed = ts - start; const prog = Math.min(elapsed / dur, 1);
+            const easedProg = prog === 1 ? 1 : 1 - Math.pow(2, -10 * prog);
+            current = Math.floor(easedProg * target); el.textContent = current;
+            if (prog < 1) requestAnimationFrame(anim); else el.textContent = target;
         }
-    });
-
-    // --- Interactive Hover Zones ---
-    doc.querySelectorAll('[data-tilt]').forEach(card => {
-        card.style.transition = 'transform 0.1s ease-out'; card.style.willChange = 'transform';
-        card.addEventListener('mousemove', (e) => {
-            const rect = card.getBoundingClientRect(); const x = e.clientX - rect.left, y = e.clientY - rect.top;
-            const centerX = rect.width / 2, centerY = rect.height / 2;
-            const rotateX = (y - centerY) / centerY * -8, rotateY = (x - centerX) / centerX * 8;
-            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-        }, { passive: true });
-        card.addEventListener('mouseleave', () => { card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)'; }, { passive: true });
-    });
-
-    doc.querySelectorAll('[data-magnetic]').forEach(btn => {
-        btn.style.transition = 'transform 0.1s ease-out'; btn.style.willChange = 'transform';
-        btn.addEventListener('mousemove', (e) => {
-            const rect = btn.getBoundingClientRect(); const x = e.clientX - (rect.left + rect.width / 2), y = e.clientY - (rect.top + rect.height / 2);
-            const distance = Math.sqrt(x * x + y * y); const maxDistance = 50;
-            if (distance < maxDistance) { const strength = 0.3; btn.style.transform = `translate(${x * strength}px, ${y * strength}px)`; }
-            else { btn.style.transform = 'translate(0, 0)'; }
-        }, { passive: true });
-        btn.addEventListener('mouseleave', () => { btn.style.transform = 'translate(0, 0)'; }, { passive: true });
-    });
-
-    const heroSection = doc.querySelector('[data-hero-glow]');
-    if (heroSection) {
-        heroSection.style.position = 'relative'; heroSection.style.overflow = 'hidden';
-        const glow = doc.createElement('div');
-        glow.style.cssText = `position:absolute;pointer-events:none;border-radius:50%;background:radial-gradient(circle, ${primaryColor()}33 0%, transparent 70%);transform:translate(-50%, -50%);opacity:0;transition:opacity 0.3s ease-out;width:400px;height:400px;`;
-        heroSection.appendChild(glow);
-        heroSection.addEventListener('mousemove', (e) => {
-            const rect = heroSection.getBoundingClientRect(); const x = e.clientX - rect.left, y = e.clientY - rect.top;
-            glow.style.left = `${x}px`; glow.style.top = `${y}px`; glow.style.opacity = 1;
-        }, { passive: true });
-        heroSection.addEventListener('mouseleave', () => { glow.style.opacity = 0; }, { passive: true });
+        requestAnimationFrame(anim);
     }
 
-    doc.querySelectorAll('[data-parallax-img]').forEach(img => {
-        img.style.transition = 'transform 0.1s ease-out'; img.style.willChange = 'transform';
-        img.addEventListener('mousemove', (e) => {
-            const rect = img.getBoundingClientRect(); const x = e.clientX - (rect.left + rect.width / 2), y = e.clientY - (rect.top + rect.height / 2);
-            const factor = parseFloat(img.dataset.parallaxImg) || 0.02;
-            img.style.transform = `translate(${x * -factor}px, ${y * -factor}px)`;
-        }, { passive: true });
-        img.addEventListener('mouseleave', () => { img.style.transform = 'translate(0, 0)'; }, { passive: true });
-    });
-
-    // --- Page Transition Prep ---
-    doc.querySelectorAll('a[href]').forEach(link => {
-        const href = link.getAttribute('href');
-        if (href && !href.startsWith('#') && !href.startsWith('mailto:') && !href.startsWith('tel:') && !href.includes('://')) {
-            link.addEventListener('click', function(e) {
-                e.preventDefault(); body.classList.add('page-exit');
-                setTimeout(() => { window.location.href = href; }, 300);
-            });
+    // --- VISIBILITY API ---
+    let lastHidden = 0;
+    function handleVisibility() {
+        if (document.hidden) { lastHidden = performance.now(); cancelAnimationFrame(animFrameId); }
+        else {
+            const hiddenDur = performance.now() - lastHidden;
+            if (hiddenDur > 3000 && !prefersReducedMotion) {
+                nodes.forEach(n => { n.vx = (Math.random() - 0.5) * 5; n.vy = (Math.random() - 0.5) * 5; });
+                document.querySelectorAll('[data-animate-on-scroll]').forEach(el => { el.classList.remove('is-visible'); el.classList.add('is-visible'); });
+                progressBar.style.transition = 'none'; progressBar.style.opacity = '1'; progressBar.style.boxShadow = `0 0 15px ${C.P}`;
+                setTimeout(() => { progressBar.style.transition = 'width 0.1s linear, opacity 0.5s ease, box-shadow 0.5s ease'; progressBar.style.opacity = '0.8'; progressBar.style.boxShadow = 'none'; }, 100);
+            }
+            if (hiddenDur > 30000 && !prefersReducedMotion) { document.body.classList.add('welcome-back-shimmer'); setTimeout(() => document.body.classList.remove('welcome-back-shimmer'), 1500); }
+            if (!prefersReducedMotion) animateCanvas();
         }
-    });
+    }
+    document.addEventListener('visibilitychange', handleVisibility);
 
-    window.addEventListener('load', () => {
-        body.classList.add('page-enter');
-        setTimeout(() => { body.classList.remove('page-enter'); }, 600);
-    });
+    // --- HOVER ZONES ---
+    function initHovers() {
+        if (prefersReducedMotion) return;
+        document.querySelectorAll('[data-magnetic-btn]').forEach(b => {
+            b.addEventListener('mousemove', e => { const r = b.getBoundingClientRect(); const x = e.clientX - (r.left + r.width / 2); const y = e.clientY - (r.top + r.height / 2); b.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`; });
+            b.addEventListener('mouseleave', () => b.style.transform = 'translate(0,0)');
+        });
+        document.querySelectorAll('[data-tilt-card]').forEach(c => {
+            c.style.cssText += 'transition:transform 0.1s ease-out;transform-style:preserve-3d;';
+            c.addEventListener('mousemove', e => { const r = c.getBoundingClientRect(); const x = (e.clientX - (r.left + r.width / 2)) / (r.width / 2); const y = (e.clientY - (r.top + r.height / 2)) / (r.height / 2); c.style.transform = `perspective(1000px) rotateX(${y * -8}deg) rotateY(${x * 8}deg)`; });
+            c.addEventListener('mouseleave', () => c.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)');
+        });
+        const hero = document.querySelector('[data-hero-light]');
+        if (hero) {
+            hero.style.cssText += 'position:relative;overflow:hidden;';
+            const light = document.createElement('div');
+            light.style.cssText = `position:absolute;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle at center,rgba(0,240,255,0.15) 0%,transparent 70%);pointer-events:none;transform:translate(-50%,-50%);filter:blur(20px);opacity:0;transition:opacity 0.3s ease;`;
+            hero.appendChild(light);
+            hero.addEventListener('mouseenter', () => light.style.opacity = '1');
+            hero.addEventListener('mouseleave', () => light.style.opacity = '0');
+            hero.addEventListener('mousemove', e => { const r = hero.getBoundingClientRect(); light.style.left = `${e.clientX - r.left}px`; light.style.top = `${e.clientY - r.top}px`; });
+        }
+        document.querySelectorAll('[data-parallax-img]').forEach(img => {
+            img.style.transition = 'transform 0.1s ease-out';
+            img.addEventListener('mousemove', e => { const r = img.getBoundingClientRect(); const x = (e.clientX - (r.left + r.width / 2)) * -0.02; const y = (e.clientY - (r.top + r.height / 2)) * -0.02; img.style.transform = `translate(${x}px, ${y}px)`; });
+            img.addEventListener('mouseleave', () => img.style.transform = 'translate(0,0)');
+        });
+    }
 
-    // --- Initialize ---
-    setupCanvas();
-    initParticles();
-    animateCanvas();
-    handleScroll();
+    // --- PAGE TRANSITIONS ---
+    function initTransitions() {
+        document.addEventListener('DOMContentLoaded', () => {
+            document.body.classList.add('page-loaded');
+            document.body.classList.remove('page-enter'); // Assume page-enter is set by default
+        });
+        document.querySelectorAll('a[href]').forEach(l => {
+            if (l.hostname === window.location.hostname) {
+                l.addEventListener('click', e => {
+                    const h = l.href;
+                    if (h === window.location.href) { e.preventDefault(); return; }
+                    e.preventDefault(); document.body.classList.add('page-exit');
+                    setTimeout(() => { window.location.href = h; }, 300);
+                });
+            }
+        });
+    }
+
+    // --- Initialize All ---
+    function initAstroTrade() {
+        document.body.classList.add('page-enter'); // Initial class for fade-in
+        setupCanvas();
+        initHovers();
+        initTransitions();
+    }
+
+    document.readyState === 'loading' ? document.addEventListener('DOMContentLoaded', initAstroTrade) : initAstroTrade();
 })();
     } catch(e) {
         console.warn('Animation init error:', e);

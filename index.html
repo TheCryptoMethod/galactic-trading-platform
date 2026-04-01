@@ -1,367 +1,157 @@
+```html
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home — Celestial Ledger</title>
-    <meta name="description" content="Celestial Ledger: The universe's most advanced high-frequency execution engine for crypto trading, featuring orbital visualizations and AI-powered signals.">
-    <meta property="og:title" content="Home — Celestial Ledger">
+    <title>Home — AstroTrade: Next-Gen Crypto Trading</title>
+    <meta name="description" content="AstroTrade offers a futuristic crypto trading dashboard with orbital visualizations, real-time market data, and AI-powered trading signals for advanced traders.">
+    <meta property="og:title" content="Home — AstroTrade: Next-Gen Crypto Trading">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Manrope:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-    <script id="tailwind-config">
-        tailwind.config = {
-          darkMode: "class",
-          theme: {
-            extend: {
-              colors: {
-                "inverse-on-surface": "#565554",
-                "secondary-container": "#7701d0",
-                "on-secondary": "#32005c",
-                "secondary": "#bf81ff",
-                "on-secondary-fixed": "#4e008a",
-                "surface-tint": "#a1faff",
-                "primary-container": "#00f4fe",
-                "surface-container-high": "#201f1f",
-                "secondary-fixed-dim": "#dab4ff",
-                "on-error": "#490013",
-                "on-tertiary-fixed": "#064200",
-                "tertiary": "#8eff71",
-                "on-tertiary-container": "#0b5800",
-                "tertiary-fixed": "#2ff801",
-                "on-surface-variant": "#adaaaa",
-                "tertiary-dim": "#2be800",
-                "on-tertiary": "#0d6100",
-                "tertiary-container": "#2ff801",
-                "on-tertiary-fixed-variant": "#0d6200",
-                "primary-fixed": "#00f4fe",
-                "on-primary-fixed-variant": "#006266",
-                "background": "#0e0e0e",
-                "on-background": "#ffffff",
-                "surface": "#0e0e0e",
-                "inverse-primary": "#006a6e",
-                "surface-container-lowest": "#000000",
-                "on-primary-fixed": "#004346",
-                "primary-fixed-dim": "#00e5ee",
-                "on-error-container": "#ffb2b9",
-                "error-container": "#a70138",
-                "surface-container-highest": "#262626",
-                "inverse-surface": "#fcf8f8",
-                "outline-variant": "#494847",
-                "error": "#ff6e84",
-                "surface-variant": "#262626",
-                "on-primary": "#006165",
-                "on-primary-container": "#00575b",
-                "surface-container": "#1a1919",
-                "secondary-dim": "#9c42f4",
-                "outline": "#777575",
-                "surface-bright": "#2c2c2c",
-                "surface-container-low": "#131313",
-                "on-secondary-fixed-variant": "#7500cc",
-                "primary": "#a1faff",
-                "tertiary-fixed-dim": "#2be800",
-                "surface-dim": "#0e0e0e",
-                "error-dim": "#d73357",
-                "primary-dim": "#00e5ee",
-                "on-surface": "#ffffff",
-                "secondary-fixed": "#e4c6ff",
-                "on-secondary-container": "#f0dcff"
-              },
-              fontFamily: {
-                "headline": ["Space Grotesk"],
-                "body": ["Manrope"],
-                "label": ["Inter"]
-              },
-              borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
-            },
-          },
-        }
-    </script>
+    <link rel="stylesheet" href="shared.css">
     <style>
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        /* Custom Tailwind Configuration - these would ideally be in tailwind.config.js */
+        /* For this exercise, they are inline to demonstrate direct application of design tokens */
+        :root {
+            /* Backgrounds & Surfaces */
+            --color-bg-primary: #02040A; /* Deep Space Black-Blue */
+            --color-bg-secondary: #050B17; /* Slightly lighter background for subtle depth */
+            --color-surface-primary: #0A111F; /* Card/Panel background */
+            --color-surface-secondary: #121C2E; /* Hover/Active surface */
+
+            /* Text Colors */
+            --color-text-primary: #E0E7EF; /* Off-white for main content */
+            --color-text-secondary: #BCC8D8; /* Subheadings, less critical info */
+            --color-text-muted: #8B9BB7; /* Muted text, descriptions */
+            --color-text-accent: var(--color-accent-blue); /* Text that needs to pop */
+
+            /* Accent Colors (Neon) */
+            --color-accent-blue: #00E0FF; /* Electric Cyan - Primary accent */
+
+            /* Typography - assuming shared.css imports these fonts */
+            --font-display: 'Michroma', sans-serif;
+            --font-body: 'Space Mono', monospace;
         }
-        .glow-sm { box-shadow: 0 0 15px -3px rgba(161, 250, 255, 0.3); }
-        .glow-primary { box-shadow: 0 0 40px -10px rgba(161, 250, 255, 0.4); }
-        .glass-panel {
-            background: rgba(38, 38, 38, 0.6);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(73, 72, 71, 0.15);
+
+        /* Applying custom properties to Tailwind classes */
+        .bg-primary { background-color: var(--color-bg-primary); }
+        .bg-secondary { background-color: var(--color-bg-secondary); }
+        .bg-surface-primary { background-color: var(--color-surface-primary); }
+        .bg-surface-secondary { background-color: var(--color-surface-secondary); }
+        .text-primary { color: var(--color-text-primary); }
+        .text-secondary { color: var(--color-text-secondary); }
+        .text-muted { color: var(--color-text-muted); }
+        .text-accent-blue { color: var(--color-accent-blue); }
+        .border-accent-blue { border-color: var(--color-accent-blue); }
+
+        .font-display { font-family: var(--font-display); }
+        .font-body { font-family: var(--font-body); }
+
+        /* Glassmorphism styles */
+        .glass-card {
+            background-color: rgba(10, 17, 31, 0.4); /* --color-surface-primary with transparency */
+            border: 1px solid rgba(188, 200, 216, 0.1); /* --color-text-secondary with transparency */
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
         }
-        body {
-            background-color: #0e0e0e;
-            color: #ffffff;
-            font-family: 'Manrope', sans-serif;
-            overflow-x: hidden;
+        .glass-section {
+            background-color: rgba(5, 11, 23, 0.6); /* --color-bg-secondary with transparency */
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
         }
-        .orbital-ring {
-            border: 2px solid rgba(161, 250, 255, 0.1);
-            border-radius: 50%;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+
+        /* Custom animations for staggered reveal */
+        @keyframes fade-in-up {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in-up {
+            animation: fade-in-up 0.8s ease-out forwards;
+            opacity: 0; /* Ensure elements are hidden before animation starts */
+        }
+        /* Arbitrary animation delays for staggered effect */
+        .animate-delay-100 { animation-delay: 100ms; }
+        .animate-delay-200 { animation-delay: 200ms; }
+        .animate-delay-300 { animation-delay: 300ms; }
+        .animate-delay-400 { animation-delay: 400ms; }
+        .animate-delay-500 { animation-delay: 500ms; }
+        .animate-delay-600 { animation-delay: 600ms; }
+        .animate-delay-700 { animation-delay: 700ms; }
+        .animate-delay-800 { animation-delay: 800ms; }
+        .animate-delay-900 { animation-delay: 900ms; }
+        .animate-delay-1000 { animation-delay: 1000ms; }
+        .animate-delay-1100 { animation-delay: 1100ms; }
+        .animate-delay-1200 { animation-delay: 1200ms; }
+        .animate-delay-1300 { animation-delay: 1300ms; }
+        .animate-delay-1400 { animation-delay: 1400ms; }
+        .animate-delay-1500 { animation-delay: 1500ms; }
+
+        /* Product Mockup Perspective Transform */
+        .perspective-mockup {
+            transform: perspective(1000px) rotateX(15deg) rotateY(15deg) rotateZ(5deg) scale(1.05);
+        }
+        .perspective-mockup:hover {
+            transform: perspective(1000px) rotateX(10deg) rotateY(10deg) rotateZ(2deg) scale(1.00);
         }
     </style>
-    <link rel="stylesheet" href="shared.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "name": "Galactic Trading Platform", "description": "A futuristic crypto trading dashboard featuring orbital visualizations, real-time market data, and AI-powered trading signals, designed with a dark space theme and neon accents.", "url": "https://thecryptomethod.github.io/galactic-trading-platform/"}</script>
 </head>
-<body class="bg-background text-on-background selection:bg-primary-container selection:text-on-primary-container">
+<body class="bg-primary text-text-primary">
     <div id="scroll-progress"></div>
-    <!-- TopAppBar (Stitch Header) -->
-    <header class="fixed top-0 w-full z-50 bg-[#0e0e0e]/60 backdrop-blur-xl h-20 flex justify-between items-center px-8 transition-all duration-400 ease-out">
-        <div class="flex items-center gap-4">
-            <span class="material-symbols-outlined text-primary text-3xl" style="font-variation-settings: 'FILL' 1;">rocket_launch</span>
-            <h1 class="font-headline text-2xl font-bold tracking-[0.2em] text-primary drop-shadow-[0_0_8px_rgba(161,250,255,0.5)]">CELESTIAL</h1>
-        </div>
-        <nav class="hidden md:flex items-center gap-8 font-headline">
-            <a class="text-primary border-b-2 border-primary pb-1 text-sm tracking-widest transition-all" href="index.html">TERMINAL</a>
-            <a class="text-on-surface-variant hover:text-primary transition-colors text-sm tracking-widest" href="dashboard.html">ORBITALS</a>
-            <a class="text-on-surface-variant hover:text-primary transition-colors text-sm tracking-widest" href="features.html">LIQUIDITY</a>
-            <a class="text-on-surface-variant hover:text-primary transition-colors text-sm tracking-widest" href="pricing.html">SECURITY</a>
-        </nav>
-        <div class="flex items-center gap-4">
-            <button class="p-2 hover:bg-primary/10 rounded-full transition-all">
-                <span class="material-symbols-outlined text-primary">search</span>
+    <nav id="main-nav" class="z-20 relative">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo" data-page="index">
+                <span class="logo-text font-display text-accent-blue">ASTROTRADE</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html" data-page="index" class="text-accent-blue">Home</a>
+                <a href="features.html" data-page="features">Features</a>
+                <a href="pricing.html" data-page="pricing">Pricing</a>
+            </div>
+            <button class="nav-hamburger" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+                </svg>
             </button>
-            <div class="w-10 h-10 rounded-full border border-primary/30 overflow-hidden hover:scale-105 transition-transform">
-                <img alt="Celestial Logo" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvTucXESyg6xo3ZGXW8QvhhqaygJoJ5CD96yjIeVVwSdCDZj4nnVvz6kSfJUoXLVQuPYbmTNXI-2O4PhEO61HzMcA2YD6euUA2xRTgeue-oebcHz_Ex92M-jzUU1USF5yFpbwzmcE9oJ_5fTuiNQ7NQ2Bvzom7v8KqQa_Jhtig4FDtcLf_sjXvGU_FqvMQ1ufFm6MPoErAmm-xdaDUlG_fPzWdVzXjPwtbD_Dg3UrUDHuSj_0QTiczViK5HkjKebEMSYASqD9W"/>
-            </div>
         </div>
-    </header>
+    </nav>
 
-    <!-- Hero Section (Stitch Hero) -->
-    <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 z-10">
-        <div class="absolute inset-0 z-0">
-            <video autoplay="" class="w-full h-full object-cover opacity-40" loop="" muted="" playsinline="">
-                <source src="https://videos.pexels.com/video-files/18526841/uhd_30fps.mp4" type="video/mp4"/>
-            </video>
-            <div class="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background"></div>
-        </div>
-        <div class="container mx-auto px-6 relative z-10 text-center">
-            <div class="inline-block px-4 py-1.5 mb-6 border border-primary/20 rounded-full bg-primary/5 backdrop-blur-md">
-                <span class="text-primary font-label text-[0.6875rem] tracking-[0.2em] uppercase">The Celestial Ledger is Live</span>
+    <!-- PAGE CONTENT HERE (multiple <section> elements) -->
+
+    <!-- HERO SECTION -->
+    <section id="hero" class="relative min-h-screen flex items-center justify-center py-20 px-6 bg-primary overflow-hidden">
+        <div class="absolute inset-0 bg-[url('hero-bg.png')] bg-cover bg-center opacity-30 z-0"></div>
+        <div class="relative z-10 max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+            <div class="text-left space-y-8">
+                <h1 class="font-display text-5xl md:text-6xl lg:text-7xl text-text-primary leading-tight animate-fade-in-up animate-delay-200">
+                    Are You Still Trading Blind in the <span class="text-accent-blue">Cosmic Chaos</span>?
+                </h1>
+                <p class="text-xl text-text-secondary font-body animate-fade-in-up animate-delay-400">
+                    Traditional dashboards leave you guessing. AstroTrade illuminates the market with orbital data visualizations and AI-powered signals, giving you unparalleled clarity and predictive power.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 animate-fade-in-up animate-delay-600">
+                    <a href="#pricing" class="btn-primary text-lg px-8 py-4">Launch Your Trade Mission</a>
+                    <a href="#features" class="btn-secondary text-lg px-8 py-4">Explore Astro-Features</a>
+                </div>
             </div>
-            <h2 class="font-headline text-5xl md:text-8xl font-bold mb-6 tracking-tighter text-on-background">
-                GALACTIC <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary via-secondary to-tertiary">TRADE</span>
+            <div class="relative flex justify-center md:justify-end animate-fade-in-up animate-delay-800">
+                <img src="product-mockup.png" alt="AstroTrade Dashboard Mockup"
+                     class="w-full max-w-xl lg:max-w-2xl perspective-mockup shadow-2xl shadow-accent-blue/50 transition-transform duration-500 ease-out">
+            </div>
+        </div>
+    </section>
+
+    <!-- PROBLEM SECTION -->
+    <section id="problem" class="relative py-20 px-6 glass-section z-10">
+        <div class="max-w-7xl mx-auto text-center">
+            <h2 class="section-title font-display text-4xl md:text-5xl text-text-primary mb-16 animate-fade-in-up animate-delay-100">
+                The <span class="text-accent-blue">Gravity Drag</span> on Your Profits
             </h2>
-            <p class="max-w-2xl mx-auto font-body text-on-surface-variant text-lg md:text-xl mb-10 leading-relaxed">
-                Liquidity without borders. Navigate the digital void with the universe's most advanced high-frequency execution engine.
-            </p>
-            <div class="flex flex-col md:flex-row items-center justify-center gap-4">
-                <button class="w-full md:w-auto px-10 py-4 bg-gradient-to-r from-primary to-primary-dim text-on-primary font-headline font-bold rounded-lg glow-primary hover:scale-105 transition-all">
-                    INITIATE TERMINAL
-                </button>
-                <button class="w-full md:w-auto px-10 py-4 border border-primary/20 bg-surface-container-highest/40 backdrop-blur-md text-primary font-headline font-bold rounded-lg hover:bg-primary/10 transition-all">
-                    VIEW ORBITALS
-                </button>
-            </div>
-        </div>
-        <!-- Animated Background Decoration -->
-        <div class="orbital-ring w-[600px] h-[600px] opacity-20"></div>
-        <div class="orbital-ring w-[900px] h-[900px] opacity-10"></div>
-    </section>
-
-    <!-- Stats Section (Orbital Engine - Stitch Section) -->
-    <section id="stats" class="py-20 relative px-6 z-10">
-        <div class="container mx-auto">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-                <!-- Stat Card 1 -->
-                <div class="glass-panel p-8 rounded-xl transition-all hover:translate-y-[-4px]">
-                    <div class="flex justify-between items-start mb-4">
-                        <span class="font-label text-on-surface-variant text-xs tracking-widest uppercase">Total Volume Traded</span>
-                        <span class="material-symbols-outlined text-tertiary">trending_up</span>
-                    </div>
-                    <div class="font-headline text-4xl font-bold text-on-background mb-2 tracking-tight">$125.4M</div>
-                    <div class="flex items-center gap-2">
-                        <span class="text-tertiary font-label text-xs">+12.4%</span>
-                        <span class="text-on-surface-variant font-label text-[0.6rem]">LAST 24H</span>
-                    </div>
+            <div class="grid md:grid-cols-3 gap-12 text-left">
+                <div class="glass-card p-8 rounded-xl shadow-lg animate-fade-in-up animate-delay-300">
+                    <h3 class="text-2xl font-display text-accent-blue mb-4">Lost in Data Noise</h3>
+                    <p class="text-text-secondary font-body leading-relaxed">
+                        You spend <strong>hours sifting through fragmented charts</strong> and static numbers, missing critical patterns. Traders report losing up to <strong>30% of potential gains</strong> because key market shifts are obscured by overwhelming, poorly presented data.
+                    </p>
                 </div>
-                <!-- Stat Card 2 -->
-                <div class="glass-panel p-8 rounded-xl transition-all hover:translate-y-[-4px]">
-                    <div class="flex justify-between items-start mb-4">
-                        <span class="font-label text-on-surface-variant text-xs tracking-widest uppercase">Active Nodes</span>
-                        <span class="material-symbols-outlined text-primary">hub</span>
-                    </div>
-                    <div class="font-headline text-4xl font-bold text-on-background mb-2 tracking-tight">12,842</div>
-                    <div class="flex items-center gap-2">
-                        <span class="text-tertiary font-label text-xs">ONLINE</span>
-                        <div class="w-2 h-2 rounded-full bg-tertiary animate-pulse"></div>
-                    </div>
-                </div>
-                <!-- Stat Card 3 -->
-                <div class="glass-panel p-8 rounded-xl transition-all hover:translate-y-[-4px]">
-                    <div class="flex justify-between items-start mb-4">
-                        <span class="font-label text-on-surface-variant text-xs tracking-widest uppercase">Liquidity Depth</span>
-                        <span class="material-symbols-outlined text-secondary">water_drop</span>
-                    </div>
-                    <div class="font-headline text-4xl font-bold text-on-background mb-2 tracking-tight">$2.8B</div>
-                    <div class="flex items-center gap-2">
-                        <span class="text-on-surface-variant font-label text-[0.6rem]">GLOBAL POOL</span>
-                    </div>
-                </div>
-                <!-- Stat Card 4 -->
-                <div class="glass-panel p-8 rounded-xl transition-all hover:translate-y-[-4px]">
-                    <div class="flex justify-between items-start mb-4">
-                        <span class="font-label text-on-surface-variant text-xs tracking-widest uppercase">Avg Execution</span>
-                        <span class="material-symbols-outlined text-primary-dim">speed</span>
-                    </div>
-                    <div class="font-headline text-4xl font-bold text-on-background mb-2 tracking-tight">12ms</div>
-                    <div class="flex items-center gap-2">
-                        <span class="text-tertiary font-label text-xs">ULTRA FAST</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Main Dashboard Grid (Stitch Section) -->
-    <section id="dashboard-grid" class="py-12 px-6 relative z-10">
-        <div class="container mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8">
-            <!-- Live Trade Terminal (The Table Card) -->
-            <div class="lg:col-span-2 glass-panel rounded-xl overflow-hidden">
-                <div class="p-6 border-b border-outline-variant/15 flex justify-between items-center bg-surface-container/30">
-                    <h3 class="font-headline text-xl font-bold tracking-tight text-primary">LIVE TRADE TERMINAL</h3>
-                    <div class="flex gap-2">
-                        <button class="p-2 hover:bg-surface-container-high rounded-lg text-on-surface-variant transition-all">
-                            <span class="material-symbols-outlined text-sm">refresh</span>
-                        </button>
-                        <button class="p-2 hover:bg-surface-container-high rounded-lg text-on-surface-variant transition-all">
-                            <span class="material-symbols-outlined text-sm">more_vert</span>
-                        </button>
-                    </div>
-                </div>
-                <div class="overflow-x-auto">
-                    <table class="w-full text-left font-body">
-                        <thead>
-                            <tr class="bg-surface-container-low/50">
-                                <th class="px-6 py-4 font-label text-[0.6875rem] tracking-widest text-on-surface-variant uppercase">Asset / Entity</th>
-                                <th class="px-6 py-4 font-label text-[0.6875rem] tracking-widest text-on-surface-variant uppercase">Hash ID</th>
-                                <th class="px-6 py-4 font-label text-[0.6875rem] tracking-widest text-on-surface-variant uppercase">Amount</th>
-                                <th class="px-6 py-4 font-label text-[0.6875rem] tracking-widest text-on-surface-variant uppercase">Status</th>
-                            </tr>
-                        </thead>
-                        <tbody class="divide-y divide-outline-variant/10">
-                            <tr class="hover:bg-primary/5 transition-colors group">
-                                <td class="px-6 py-5 flex items-center gap-3">
-                                    <div class="w-8 h-8 rounded-lg bg-surface-container-high flex items-center justify-center border border-primary/20">
-                                        <span class="material-symbols-outlined text-primary text-sm">token</span>
-                                    </div>
-                                    <div>
-                                        <p class="text-sm font-semibold">NEBULA-X</p>
-                                        <p class="text-[0.65rem] text-on-surface-variant">L1 Network</p>
-                                    </div>
-                                </td>
-                                <td class="px-6 py-5 text-sm font-mono text-primary-dim/70">0x71...E209</td>
-                                <td class="px-6 py-5 text-sm font-bold">$42,000.00</td>
-                                <td class="px-6 py-5">
-                                    <span class="px-2.5 py-1 rounded-full text-[0.65rem] font-bold bg-tertiary-container/15 text-tertiary border border-tertiary/20">EXECUTED</span>
-                                </td>
-                            </tr>
-                            <tr class="hover:bg-primary/5 transition-colors group">
-                                <td class="px-6 py-5 flex items-center gap-3">
-                                    <div class="w-8 h-8 rounded-lg bg-surface-container-high flex items-center justify-center border border-secondary/20">
-                                        <span class="material-symbols-outlined text-secondary text-sm">filter_vintage</span>
-                                    </div>
-                                    <div>
-                                        <p class="text-sm font-semibold">ASTRA POOL</p>
-                                        <p class="text-[0.65rem] text-on-surface-variant">Liquidity Swap</p>
-                                    </div>
-                                </td>
-                                <td class="px-6 py-5 text-sm font-mono text-primary-dim/70">0x3A...F981</td>
-                                <td class="px-6 py-5 text-sm font-bold">$12,450.22</td>
-                                <td class="px-6 py-5">
-                                    <span class="px-2.5 py-1 rounded-full text-[0.65rem] font-bold bg-error-container/15 text-error border border-error/20">FAILED</span>
-                                </td>
-                            </tr>
-                            <tr class="hover:bg-primary/5 transition-colors group">
-                                <td class="px-6 py-5 flex items-center gap-3">
-                                    <div class="w-8 h-8 rounded-lg bg-surface-container-high flex items-center justify-center border border-tertiary/20">
-                                        <span class="material-symbols-outlined text-tertiary text-sm">cloud_sync</span>
-                                    </div>
-                                    <div>
-                                        <p class="text-sm font-semibold">VOID-LINK</p>
-                                        <p class="text-[0.65rem] text-on-surface-variant">Bridge Transfer</p>
-                                    </div>
-                                </td>
-                                <td class="px-6 py-5 text-sm font-mono text-primary-dim/70">0x99...B112</td>
-                                <td class="px-6 py-5 text-sm font-bold">$890.00</td>
-                                <td class="px-6 py-5">
-                                    <span class="px-2.5 py-1 rounded-full text-[0.65rem] font-bold bg-primary-container/10 text-primary border border-primary/20">PENDING</span>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <!-- Market Analytics Sidebar -->
-            <div class="flex flex-col gap-6">
-                <!-- Orbital Asset Chart -->
-                <div class="glass-panel p-6 rounded-xl relative overflow-hidden h-full flex flex-col justify-between">
-                    <h4 class="font-headline text-lg font-bold text-on-background mb-4">ASSET ORBIT</h4>
-                    <div class="relative h-48 flex items-center justify-center">
-                        <!-- Simulated Orbital Chart UI -->
-                        <div class="w-32 h-32 rounded-full border-4 border-primary border-t-transparent animate-spin duration-[10s]"></div>
-                        <div class="absolute w-24 h-24 rounded-full border-4 border-secondary border-b-transparent animate-spin duration-[6s] reverse"></div>
-                        <div class="absolute font-headline text-xl font-bold">84%</div>
-                    </div>
-                    <div class="space-y-3 mt-4">
-                        <div class="flex justify-between items-center">
-                            <span class="text-xs text-on-surface-variant">PRIMARY ASSETS</span>
-                            <span class="text-xs font-bold text-primary">62.4%</span>
-                        </div>
-                        <div class="w-full h-1.5 bg-surface-container-high rounded-full overflow-hidden">
-                            <div class="h-full bg-primary w-[62.4%]"></div>
-                        </div>
-                        <div class="flex justify-between items-center">
-                            <span class="text-xs text-on-surface-variant">SYNTHETICS</span>
-                            <span class="text-xs font-bold text-secondary">37.6%</span>
-                        </div>
-                        <div class="w-full h-1.5 bg-surface-container-high rounded-full overflow-hidden">
-                            <div class="h-full bg-secondary w-[37.6%]"></div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Action Card -->
-                <div class="p-6 rounded-xl bg-gradient-to-br from-primary-container/20 to-secondary-container/20 border border-primary/20 glow-sm">
-                    <h4 class="font-headline text-lg font-bold mb-2">SECURE VAULT</h4>
-                    <p class="text-xs text-on-surface-variant mb-4">Transfer assets to cold storage via the multi-sig gateway.</p>
-                    <button class="w-full py-2 bg-on-background text-background font-headline font-bold text-sm rounded hover:bg-primary transition-all">
-                        DEPLOY SECURITY
-                    </button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer (Stitch Footer) -->
-    <footer class="bg-[#0e0e0e] w-full py-12 mt-20 border-t border-[#494847]/15 relative z-10">
-        <div class="flex flex-col md:flex-row justify-between items-center px-12 gap-6">
-            <div class="flex flex-col gap-2 items-center md:items-start">
-                <p class="font-headline font-bold tracking-[0.2em] text-primary text-xl">CELESTIAL</p>
-                <p class="font-label text-[0.6875rem] tracking-[0.05em] uppercase text-on-surface-variant">© 2124 CELESTIAL LEDGER. ALL ASSETS SECURED IN THE VOID.</p>
-            </div>
-            <div class="flex gap-10">
-                <a class="font-label text-[0.6875rem] tracking-[0.05em] uppercase text-on-surface-variant hover:text-tertiary transition-all" href="index.html">TERMINAL</a>
-                <a class="font-label text-[0.6875rem] tracking-[0.05em] uppercase text-on-surface-variant hover:text-tertiary transition-all" href="dashboard.html">ORBITALS</a>
-                <a class="font-label text-[0.6875rem] tracking-[0.05em] uppercase text-on-surface-variant hover:text-tertiary transition-all" href="features.html">LIQUIDITY</a>
-                <a class="font-label text-[0.6875rem] tracking-[0.05em] uppercase text-on-surface-variant hover:text-tertiary transition-all" href="pricing.html">SECURITY</a>
-            </div>
-            <div class="flex gap-4">
-                <a class="w-8 h-8 flex items-center justify-center border border-outline-variant/30 rounded hover:border-primary transition-all" href="#">
-                    <span class="material-symbols-outlined text-primary text-sm">public</span>
-                </a>
-                <a class="w-8 h-8 flex items-center justify-center border border-outline-variant/30 rounded hover:border-primary transition-all" href="#">
-                    <span class="material-symbols-outlined text-primary text-sm">terminal</span>
-                </a>
-                <a class="w-8 h-8 flex items-center justify-center border border-outline-variant/30 rounded hover:border-primary transition-all" href="#">
-                    <span class="material-symbols-outlined text-primary text-sm">shield</span>
-                </a>
-            </div>
-        </div>
-    </footer>
-
-    <script src="shared.js"></script>
-    <script src="animations.js"></script>
-</body>
-</html>
+                <div class="glass-card p-8 rounded-xl shadow-lg animate-fade-in-up animate-delay-5
